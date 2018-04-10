@@ -38,20 +38,19 @@ TestApp::~TestApp()
 
 bool TestApp::Init()
 {
-	glClearColor(255.0f, 255.0f, 255.0f, 1.0f);
-	
+	//glClearColor(255.0f, 255.0f, 255.0f, 1.0f);
 	return true;
 }
 
 void TestApp::Update(sf::Time & time)
 {
+	
 	//std::cout << "1" << std::endl;
-	//input handler will run from here	
 }
 
 void TestApp::Render(sf::Time & time)
 {
-	glClear(GL_COLOR_BUFFER_BIT);
+	//glClear(GL_COLOR_BUFFER_BIT);
 	//draw.drawSquare(700, 450);
 }
 

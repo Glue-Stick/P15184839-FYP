@@ -6,7 +6,7 @@
 class Drawables
 {
 public:
-	void drawSquare(float x, float y, sf::RenderWindow window);
+	void drawSquare(float x, float y, float size, sf::RenderWindow* window);
 private:
 protected:
 };

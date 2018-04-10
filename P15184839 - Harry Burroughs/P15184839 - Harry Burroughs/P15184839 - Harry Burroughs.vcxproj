@@ -80,9 +80,9 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>H:\Documents\Year 3\FYP\P15184839-FYP\P15184839 - Harry Burroughs\P15184839 - Harry Burroughs\include;H:\Documents\Year 3\FYP\P15184839-FYP\GLFW;H:\Documents\Year 3\FYP\P15184839-FYP\GLEW\glew-2.1.0\include;H:\Documents\Year 3\FYP\P15184839-FYP\SFML\include;$(IncludePath)</IncludePath>
-    <LibraryPath>H:\Documents\Year 3\FYP\P15184839-FYP\GLEW\glew-2.1.0\lib\Release\Win32;H:\Documents\Year 3\FYP\P15184839-FYP\SFML\lib;$(LibraryPath)</LibraryPath>
-    <SourcePath>H:\Documents\Year 3\FYP\P15184839-FYP\P15184839 - Harry Burroughs\P15184839 - Harry Burroughs\src;E:\P15184839 FYP\P15184839-FYP\P15184839 - Harry Burroughs\P15184839 - Harry Burroughs\src;$(SourcePath)</SourcePath>
+    <IncludePath>./include;../../GLFW;../../GLEW\glew-2.1.0\include;../../SFML\include;$(IncludePath)</IncludePath>
+    <LibraryPath>../../GLEW\glew-2.1.0\lib\Release\Win32;../../SFML\lib;$(LibraryPath)</LibraryPath>
+    <SourcePath>./src;$(SourcePath)</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>E:\P15184839 FYP\P15184839-FYP\SFML\include;E:\P15184839 FYP\P15184839-FYP\GLEW\glew-2.1.0\include;$(IncludePath)</IncludePath>

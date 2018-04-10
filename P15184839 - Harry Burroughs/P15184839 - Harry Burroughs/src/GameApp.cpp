@@ -1,4 +1,4 @@
-#include "GameApp.h"
+#include <GameApp.h>
 
 GameApp::GameApp()
 {
@@ -27,10 +27,6 @@ void GameApp::Run()
 			if (e.type == sf::Event::Closed)
 				m_window->close();
 			input->InputHandler(e, m_window);
-			/*if (e.type == sf::Event::KeyPressed && sf::Keyboard::LShift)
-			{
-				std::cout << "Left Shift" << std::endl;
-			}*/
 		}
 		
 		sf::Time time = m_clock.restart();
