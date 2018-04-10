@@ -4,7 +4,7 @@
 #include <SFML\Window.hpp>
 #include <SFML\System.hpp>
 #include <SFML\OpenGL.hpp>
-
+#include "Scene.h"
 #include <Input.h>
 
 
@@ -12,24 +12,18 @@ class GameApp
 {
 public:
 	Input* input;
+	Scene* scene;
 	GameApp();
-	GameApp(const GameApp& other);
-	GameApp& operator=(const GameApp&);
-	virtual ~GameApp(void);
 
 	//Main Application loop
 	void Run();
 
 	//Framework Methods
-	virtual bool Init() = 0;
-	virtual void Update(sf::Time& time) = 0;
-	virtual void Render(sf::Time& time) = 0;
-	virtual void Cleanup() = 0;
+	bool Init = true;
 
 	sf::RenderWindow* m_window;
 
 protected:
 private:
-	
-	sf::Clock m_clock;
+
 };

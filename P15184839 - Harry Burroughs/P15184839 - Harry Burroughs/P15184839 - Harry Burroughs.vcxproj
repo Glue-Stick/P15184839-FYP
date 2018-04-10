@@ -22,12 +22,14 @@
     <ClInclude Include="include\Drawables.h" />
     <ClInclude Include="include\GameApp.h" />
     <ClInclude Include="include\Input.h" />
+    <ClInclude Include="include\Scene.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Drawables.cpp" />
     <ClCompile Include="src\GameApp.cpp" />
     <ClCompile Include="src\Input.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Scene.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{725A55AD-7191-4FBF-813C-B562BC645025}</ProjectGuid>

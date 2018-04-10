@@ -6,10 +6,10 @@
 class Input
 {
 public:
-	Input();
+	Input(Scene* scene);
 	void InputHandler(sf::Event event, sf::RenderWindow* window);
 
-	Drawables draw;
+	Drawables* draw;
 
 private:
 
