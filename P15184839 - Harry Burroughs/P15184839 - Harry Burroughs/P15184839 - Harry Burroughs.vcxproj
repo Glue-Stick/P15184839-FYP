@@ -19,7 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Drawables.cpp" />
+    <ClCompile Include="src\GameApp.cpp" />
     <ClCompile Include="src\main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\Drawables.h" />
+    <ClInclude Include="include\GameApp.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{725A55AD-7191-4FBF-813C-B562BC645025}</ProjectGuid>
@@ -72,9 +78,9 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>P15184839 - Harry Burroughs\include;../../SFML\include;../../GLEW\glew-2.1.0\include;$(IncludePath)</IncludePath>
+    <IncludePath>E:\P15184839 FYP\P15184839-FYP\P15184839 - Harry Burroughs\P15184839 - Harry Burroughs\include;../../SFML\include;../../GLEW\glew-2.1.0\include;$(IncludePath)</IncludePath>
     <LibraryPath>../../SFML\lib;../../GLEW\glew-2.1.0\lib\Release\Win32;$(LibraryPath)</LibraryPath>
-    <SourcePath>P15184839 - Harry Burroughs\src;$(SourcePath)</SourcePath>
+    <SourcePath>E:\P15184839 FYP\P15184839-FYP\P15184839 - Harry Burroughs\P15184839 - Harry Burroughs\src;$(SourcePath)</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>E:\P15184839 FYP\P15184839-FYP\SFML\include;E:\P15184839 FYP\P15184839-FYP\GLEW\glew-2.1.0\include;$(IncludePath)</IncludePath>
