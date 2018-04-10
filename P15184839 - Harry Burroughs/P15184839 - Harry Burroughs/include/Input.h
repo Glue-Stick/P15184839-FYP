@@ -7,11 +7,10 @@ class Input
 {
 public:
 	Input();
-	void InputHandler(unsigned char key);
-	
-	
+	void InputHandler(sf::Event event, sf::RenderWindow* window);
 
 	Drawables draw;
+
 private:
 
 protected:

@@ -5,20 +5,14 @@ Input::Input()
 	
 }
 
-void Input::InputHandler(unsigned char key)
+void Input::InputHandler(sf::Event event, sf::RenderWindow* window)
 {
-	bool gameMode = true;
-	if (gameMode)
+	while (window->pollEvent(event))
 	{
-		switch (key)
+		if (event.type == sf::Event::KeyPressed && sf::Keyboard::LShift)
 		{
-			if (key == 'a')
-			{
-				std::cout << "A" << std::endl;
-			}
+			std::cout << "Left Shift" << std::endl;
+			//draw.drawSquare(700, 450, window);			
 		}
 	}
-	
-
-	
 }

@@ -26,6 +26,11 @@ void GameApp::Run()
 		{
 			if (e.type == sf::Event::Closed)
 				m_window->close();
+			input->InputHandler(e, m_window);
+			/*if (e.type == sf::Event::KeyPressed && sf::Keyboard::LShift)
+			{
+				std::cout << "Left Shift" << std::endl;
+			}*/
 		}
 		
 		sf::Time time = m_clock.restart();
@@ -33,7 +38,7 @@ void GameApp::Run()
 		Update(time);
 		//Render
 		Render(time);
-		input->InputHandler(e.key.code);
+		
 		//present it to that screen
 		m_window->display();
 	}
