@@ -5,10 +5,13 @@
 #include <SFML\System.hpp>
 #include <SFML\OpenGL.hpp>
 
+#include <Input.h>
+
 
 class GameApp
 {
 public:
+	Input* input;
 	GameApp();
 	GameApp(const GameApp& other);
 	GameApp& operator=(const GameApp&);
@@ -25,6 +28,7 @@ public:
 
 	sf::RenderWindow* m_window;
 
+protected:
 private:
 	
 	sf::Clock m_clock;

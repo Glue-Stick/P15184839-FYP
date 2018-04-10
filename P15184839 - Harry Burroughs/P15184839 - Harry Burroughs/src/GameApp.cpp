@@ -2,7 +2,7 @@
 
 GameApp::GameApp()
 {
-	m_window = new sf::RenderWindow(sf::VideoMode(800, 600, 32),"Final Year Project");
+	m_window = new sf::RenderWindow(sf::VideoMode(1400, 900, 32),"Final Year Project"); /*!< Creates the sfml window the game will run in, at 1400 in the x and 900 in the y, created as a pointer so it will hold its place in the memory. */
 }
 
 GameApp::~GameApp(void)
@@ -33,10 +33,12 @@ void GameApp::Run()
 		Update(time);
 		//Render
 		Render(time);
-
+		input->InputHandler(e.key.code);
 		//present it to that screen
 		m_window->display();
 	}
 	//Cleanup resources before exiting
 	Cleanup();
 }
+
+

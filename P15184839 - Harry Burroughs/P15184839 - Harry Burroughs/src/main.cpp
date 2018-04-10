@@ -2,8 +2,6 @@
 #include <GameApp.h>
 #include <Drawables.h>
 
-Drawables draw;
-
 class TestApp : public GameApp
 {
 public:
@@ -40,19 +38,21 @@ TestApp::~TestApp()
 
 bool TestApp::Init()
 {
-	glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
-	draw.drawSquare(400, 300);
+	glClearColor(255.0f, 255.0f, 255.0f, 1.0f);
+	
 	return true;
 }
 
 void TestApp::Update(sf::Time & time)
 {
-	std::cout << "1" << std::endl;
+	//std::cout << "1" << std::endl;
+	//input handler will run from here	
 }
 
 void TestApp::Render(sf::Time & time)
 {
 	glClear(GL_COLOR_BUFFER_BIT);
+	//draw.drawSquare(700, 450);
 }
 
 void TestApp::Cleanup()
