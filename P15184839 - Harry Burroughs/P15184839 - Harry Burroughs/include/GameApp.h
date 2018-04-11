@@ -6,7 +6,8 @@
 #include <SFML\OpenGL.hpp>
 #include "Scene.h"
 #include <Input.h>
-
+#include <imgui-master\imgui.h>
+#include <imgui-master\imgui-SFML.h>
 
 class GameApp
 {
@@ -17,9 +18,6 @@ public:
 
 	//Main Application loop
 	void Run();
-
-	//Framework Methods
-	bool Init = true;
 
 	sf::RenderWindow* m_window;
 

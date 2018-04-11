@@ -79,7 +79,7 @@ public:
     /// \return Current position of \a finger, or undefined if it's not down
     ///
     ////////////////////////////////////////////////////////////
-    static Vector2i getPosition(unsigned int finger, const Window& relativeTo);
+    static Vector2i getPosition(unsigned int finger, const Window* relativeTo);
 };
 
 } // namespace sf
