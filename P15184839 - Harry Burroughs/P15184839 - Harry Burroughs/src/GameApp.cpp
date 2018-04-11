@@ -36,7 +36,7 @@ void GameApp::Run()
 			ImGui::SFML::ProcessEvent(e);
 			if (e.type == sf::Event::Closed)
 				m_window->close();
-			input->InputHandler(e, m_window);
+			//input->InputHandler(e, m_window);
 		}	
 
 		ImGui::SFML::Update(m_window, deltaClock.restart());
@@ -60,6 +60,15 @@ void GameApp::Run()
 			//this code gets if user clicks on the button
 			m_window->setTitle(windowTitle);
 		}
+		ImGui::End();
+
+		ImGui::Begin("Add Shapes");
+
+		if (ImGui::Button("Add Red Square"))
+		{
+			input->draw->drawSquare(700.f, 450.f, 20.f, m_window);
+		}
+
 		ImGui::End();
 
 		m_window->clear(bgColor);
