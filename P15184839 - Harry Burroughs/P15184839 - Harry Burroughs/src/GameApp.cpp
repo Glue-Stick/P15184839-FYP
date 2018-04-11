@@ -80,6 +80,13 @@ void GameApp::Run()
 
 		ImGui::End();
 
+		ImGui::Begin("Save/Load");
+
+		ImGui::Button("Save Level");
+		ImGui::Button("Load Level");
+
+		ImGui::End();
+
 		m_window->clear(bgColor);
 		ImGui::SFML::Render(m_window);
 
