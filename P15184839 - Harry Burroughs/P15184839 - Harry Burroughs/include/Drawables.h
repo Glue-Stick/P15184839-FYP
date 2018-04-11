@@ -10,7 +10,9 @@ class Drawables
 public:
 	Scene* scene;
 	Drawables(Scene* scene);
-	void drawSquare(float x, float y, float size, sf::RenderWindow* window);
+	void drawRedSquare(float x, float y, float size, sf::RenderWindow* window);
+	void drawBlueSquare(float x, float y, float size, sf::RenderWindow* window);
+	void drawYellowSquare(float x, float y, float size, sf::RenderWindow* window);
 private:
 protected:
 };

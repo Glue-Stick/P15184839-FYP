@@ -17,6 +17,7 @@ void GameApp::Run()
 	sf::Color bgColor;
 
 	float color[3] = { 0.f, 0.f, 0.f };
+	float location[2] = { 700.f, 450.f };
 
 	char windowTitle[255] = "Final Year Project";
 
@@ -46,7 +47,7 @@ void GameApp::Run()
 		//background colour edit
 		if (ImGui::ColorEdit3("Background Colour", color))
 		{
-			//this code gets called if color value changes, so thge background colour is upgraded automatically
+			//this code gets called if color value changes, so the background colour is upgraded automatically
 			bgColor.r = static_cast<sf::Uint8>(color[0] * 255.f);
 			bgColor.g = static_cast<sf::Uint8>(color[1] * 255.f);
 			bgColor.b = static_cast<sf::Uint8>(color[2] * 255.f);
@@ -66,7 +67,15 @@ void GameApp::Run()
 
 		if (ImGui::Button("Add Red Square"))
 		{
-			input->draw->drawSquare(700.f, 450.f, 20.f, m_window);
+			input->draw->drawRedSquare(location[0], location[1], 20.f, m_window);
+		}
+		if (ImGui::Button("Add Blue Square"))
+		{
+			input->draw->drawBlueSquare(location[0] + 100, location[1] + 100, 20.f, m_window);
+		}
+		if (ImGui::Button("Add Yellow Square"))
+		{
+			input->draw->drawYellowSquare(location[0] - 100, location[1] - 100, 20.f, m_window);
 		}
 
 		ImGui::End();
