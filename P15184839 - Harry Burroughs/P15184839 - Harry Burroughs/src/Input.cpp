@@ -17,7 +17,7 @@ void Input::InputHandler(sf::Event event, sf::RenderWindow* window)
 		std::cin >> y;
 		std::cout << "Please enter what size you want your recatangle to be." << std::endl;
 		std::cin >> size;*/
-		draw->drawSquare(700, 450, 50, window);			
+		draw->drawSquare(700, 700, 50, window);			
 	}
 	
 }

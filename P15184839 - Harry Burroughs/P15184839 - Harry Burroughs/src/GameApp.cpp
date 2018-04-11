@@ -18,7 +18,7 @@ void GameApp::Run()
 
 	float color[3] = { 0.f, 0.f, 0.f };
 
-	char windowTitle[255] = "ImGui + SFML = <3";
+	char windowTitle[255] = "Final Year Project";
 
 	m_window->setTitle(windowTitle);
 	m_window->resetGLStates();

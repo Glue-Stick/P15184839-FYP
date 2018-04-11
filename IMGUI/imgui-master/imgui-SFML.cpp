@@ -258,11 +258,11 @@ void Update(sf::Window* window, sf::RenderWindow* target, sf::Time dt)
     if (!s_mouseMoved)
     {
         if (sf::Touch::isDown(0))
-            s_touchPos = sf::Touch::getPosition(0, window);
+            s_touchPos = sf::Touch::getPosition(0, *window);
 
         Update(s_touchPos, static_cast<sf::Vector2f>(target->getSize()), dt);
     } else {
-        Update(sf::Mouse::getPosition(window), static_cast<sf::Vector2f>(target->getSize()), dt);
+        Update(sf::Mouse::getPosition(*window), static_cast<sf::Vector2f>(target->getSize()), dt);
     }
     window->setMouseCursorVisible(!ImGui::GetIO().MouseDrawCursor); // don't draw mouse cursor if ImGui draws it
 }
