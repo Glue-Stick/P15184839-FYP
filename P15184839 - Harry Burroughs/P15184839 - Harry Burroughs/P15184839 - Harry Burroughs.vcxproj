@@ -86,8 +86,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>../../SFML\SFML-2.4.2\include;../../IMGUI;./include;../../GLFW;../../GLEW\glew-2.1.0\include;$(IncludePath)</IncludePath>
-    <LibraryPath>../../GLEW\glew-2.1.0\lib\Release\Win32;J:\Data\Documents\School\DMU\Year 3\FYP\P15184839-FYP\SFML\SFML-2.4.2\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>../../BOX2D\include;../../SFML\SFML-2.4.2\include;../../IMGUI;./include;../../GLFW;../../GLEW\glew-2.1.0\include;$(IncludePath)</IncludePath>
+    <LibraryPath>../../BOX2D\lib;../../GLEW\glew-2.1.0\lib\Release\Win32;../../SFML\SFML-2.4.2\lib;$(LibraryPath)</LibraryPath>
     <SourcePath>./src;$(SourcePath)</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

@@ -22,6 +22,7 @@ public:
 	sf::RenderWindow* m_window;
 	int noOfPlayers = 0;
 
+	
 protected:
 private:
 

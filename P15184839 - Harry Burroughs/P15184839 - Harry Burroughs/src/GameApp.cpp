@@ -25,6 +25,9 @@ void GameApp::Run()
 	m_window->resetGLStates();
 	sf::Clock deltaClock;
 
+	/*b2Vec2 Gravity(0.f, 9.8f);
+	b2World World(Gravity);*/
+
 	//main application loop
 	while (m_window->isOpen())
 	{
@@ -67,21 +70,22 @@ void GameApp::Run()
 
 		if (ImGui::Button("Add Red Square"))
 		{
-			input->draw->drawRedSquare(750, 450, 20.f, m_window);
+			//ImGui::InputFloat3("Position X, Position Y, Size", location, 1, NULL);
+			input->draw->drawRedSquare(700, 550, 20.f, 0, m_window);
 		}
 		if (ImGui::Button("Add Blue Square"))
 		{
-			input->draw->drawBlueSquare(100, 350, 20.f, m_window);
+			input->draw->drawBlueSquare(100, 350, 20.f, 0, m_window);
 		}
 		if (ImGui::Button("Add Yellow Square"))
 		{
-			input->draw->drawYellowSquare(1300, 200, 20.f, m_window);
+			input->draw->drawYellowSquare(1300, 200, 20.f, 0, m_window);
 		}
 		if (noOfPlayers < 1)
 		{
 			if (ImGui::Button("Add Player Square"))
 			{
-				input->draw->drawPlayer(500, 800, 20.f, m_window);
+				input->draw->drawPlayer(500, 800, 20.f, 0, m_window);
 				noOfPlayers++;
 			}
 		}		
@@ -98,14 +102,17 @@ void GameApp::Run()
 		if (ImGui::Button("Save Level to Slot 1"))
 		{
 			scene->save1();
+			noOfPlayers = 0;
 		}
 		if (ImGui::Button("Save Level to Slot 2"))
 		{
 			scene->save2();
+			noOfPlayers = 0;
 		}
 		if (ImGui::Button("Save Level to Slot 3"))
 		{
 			scene->save3();
+			noOfPlayers = 0;
 		}
 
 		ImGui::End();
@@ -115,14 +122,17 @@ void GameApp::Run()
 		if (ImGui::Button("Load Level from Slot 1"))
 		{
 			scene->load1();
+			noOfPlayers = 1;
 		}
 		if (ImGui::Button("Load Level from Slot 2"))
 		{
 			scene->load2();
+			noOfPlayers = 1;
 		}
 		if (ImGui::Button("Load Level from Slot 3"))
 		{
 			scene->load3();
+			noOfPlayers = 1;
 		}
 
 		ImGui::End();
@@ -131,6 +141,9 @@ void GameApp::Run()
 		ImGui::SFML::Render(m_window);
 		input->draw->drawGrid(700, 450, m_window);
 		input->draw->drawGridNumbers(0, 0, m_window);
+
+		/*!< Simulate the world. */
+		//World.Step(1 / 60.f, 8, 3);
 
 		scene->render(m_window);
 		//present it to that screen
