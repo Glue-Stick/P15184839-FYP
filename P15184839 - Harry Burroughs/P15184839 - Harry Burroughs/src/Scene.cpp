@@ -32,12 +32,35 @@ void Scene::clear()
 	shapesToBeDrawn.clear();
 }
 
-void Scene::save()
+void Scene::save1()
 {
 	Level1 = shapesToBeDrawn;
+	clear();
 }
 
-void Scene::load()
+void Scene::save2()
+{
+	Level2 = shapesToBeDrawn;
+	clear();
+}
+
+void Scene::save3()
+{
+	Level3 = shapesToBeDrawn;
+	clear();
+}
+
+void Scene::load1()
 {
 	shapesToBeDrawn = Level1;
+}
+
+void Scene::load2()
+{
+	shapesToBeDrawn = Level2;
+}
+
+void Scene::load3()
+{
+	shapesToBeDrawn = Level3;
 }

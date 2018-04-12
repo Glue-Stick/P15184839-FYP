@@ -67,14 +67,7 @@ void GameApp::Run()
 
 		if (ImGui::Button("Add Red Square"))
 		{
-			ImGui::Begin("Red Square");
-			if(ImGui::Button("Draw Red Square"))
-			{
-				//float Position[3] = { 0.f, 0.f, 0.f };
-				//ImGui::InputFloat3("Square Position", Position);
-				//input->draw->drawRedSquare(Position[0], Position[1], Position[2], m_window);
-			}					
-			ImGui::End();
+			input->draw->drawRedSquare(750, 450, 20.f, m_window);
 		}
 		if (ImGui::Button("Add Blue Square"))
 		{
@@ -91,15 +84,36 @@ void GameApp::Run()
 
 		ImGui::End();
 
-		ImGui::Begin("Save/Load");
+		ImGui::Begin("Save Level");
 
-		if (ImGui::Button("Save Level"))
+		if (ImGui::Button("Save Level to Slot 1"))
 		{
-			scene->save();
+			scene->save1();
 		}
-		if (ImGui::Button("Load Level"))
+		if (ImGui::Button("Save Level to Slot 2"))
 		{
-			scene->load();
+			scene->save2();
+		}
+		if (ImGui::Button("Save Level to Slot 3"))
+		{
+			scene->save3();
+		}
+
+		ImGui::End();
+
+		ImGui::Begin("Load Level");
+
+		if (ImGui::Button("Load Level from Slot 1"))
+		{
+			scene->load1();
+		}
+		if (ImGui::Button("Load Level from Slot 2"))
+		{
+			scene->load2();
+		}
+		if (ImGui::Button("Load Level from Slot 3"))
+		{
+			scene->load3();
 		}
 
 		ImGui::End();
