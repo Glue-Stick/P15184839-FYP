@@ -14,9 +14,9 @@ void GameApp::Run()
 	m_window->setVerticalSyncEnabled(true);
 	ImGui::SFML::Init(m_window);
 
-	sf::Color bgColor;
+	sf::Color bgColor = sf::Color::White;
 
-	float color[3] = { 0.f, 0.f, 0.f };
+	float color[3] = { 1.0f, 1.0f, 1.0f };
 	float location[2] = { 700.f, 450.f };
 
 	char windowTitle[255] = "Final Year Project";
@@ -67,28 +67,47 @@ void GameApp::Run()
 
 		if (ImGui::Button("Add Red Square"))
 		{
-			input->draw->drawRedSquare(location[0], location[1], 20.f, m_window);
+			ImGui::Begin("Red Square");
+			if(ImGui::Button("Draw Red Square"))
+			{
+				//float Position[3] = { 0.f, 0.f, 0.f };
+				//ImGui::InputFloat3("Square Position", Position);
+				//input->draw->drawRedSquare(Position[0], Position[1], Position[2], m_window);
+			}					
+			ImGui::End();
 		}
 		if (ImGui::Button("Add Blue Square"))
 		{
-			input->draw->drawBlueSquare(location[0] + 100, location[1] + 100, 20.f, m_window);
+			input->draw->drawBlueSquare(100, 350, 20.f, m_window);
 		}
 		if (ImGui::Button("Add Yellow Square"))
 		{
-			input->draw->drawYellowSquare(location[0] - 100, location[1] - 100, 20.f, m_window);
+			input->draw->drawYellowSquare(1300, 200, 20.f, m_window);
+		}
+		if (ImGui::Button("Clear Shapes"))
+		{
+			scene->clear();
 		}
 
 		ImGui::End();
 
 		ImGui::Begin("Save/Load");
 
-		ImGui::Button("Save Level");
-		ImGui::Button("Load Level");
+		if (ImGui::Button("Save Level"))
+		{
+			scene->save();
+		}
+		if (ImGui::Button("Load Level"))
+		{
+			scene->load();
+		}
 
 		ImGui::End();
 
 		m_window->clear(bgColor);
 		ImGui::SFML::Render(m_window);
+		input->draw->drawGrid(700, 450, m_window);
+		input->draw->drawGridNumbers(0, 0, m_window);
 
 		scene->render(m_window);
 		//present it to that screen
