@@ -17,7 +17,8 @@ void GameApp::Run()
 	sf::Color bgColor = sf::Color::White;
 
 	float color[3] = { 1.0f, 1.0f, 1.0f };
-	float location[2] = { 700.f, 450.f };
+	float variables[4] = { 700.f, 450.f, 20.f, 0.f };
+	float usedVariables[4];
 
 	char windowTitle[255] = "Final Year Project";
 
@@ -68,10 +69,18 @@ void GameApp::Run()
 
 		ImGui::Begin("Add Shapes");
 
+		if (ImGui::InputFloat4("Variable Input", variables))
+		{
+			variables[0] = static_cast<sf::Uint8>(usedVariables[0] * 1.f);
+			variables[1] = static_cast<sf::Uint8>(usedVariables[1] * 1.f);
+			variables[2] = static_cast<sf::Uint8>(usedVariables[2] * 1.f);
+			variables[3] = static_cast<sf::Uint8>(usedVariables[3] * 1.f);
+		}
+
 		if (ImGui::Button("Add Red Square"))
 		{
 			//ImGui::InputFloat3("Position X, Position Y, Size", location, 1, NULL);
-			input->draw->drawRedSquare(700, 550, 20.f, 0, m_window);
+			input->draw->drawRedSquare(usedVariables[0], usedVariables[1], usedVariables[2], usedVariables[3], m_window);
 		}
 		if (ImGui::Button("Add Blue Square"))
 		{
