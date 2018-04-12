@@ -77,9 +77,18 @@ void GameApp::Run()
 		{
 			input->draw->drawYellowSquare(1300, 200, 20.f, m_window);
 		}
+		if (noOfPlayers < 1)
+		{
+			if (ImGui::Button("Add Player Square"))
+			{
+				input->draw->drawPlayer(500, 800, 20.f, m_window);
+				noOfPlayers++;
+			}
+		}		
 		if (ImGui::Button("Clear Shapes"))
 		{
 			scene->clear();
+			noOfPlayers = 0;
 		}
 
 		ImGui::End();

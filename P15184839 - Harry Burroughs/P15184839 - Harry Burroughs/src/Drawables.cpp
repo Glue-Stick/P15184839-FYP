@@ -13,6 +13,8 @@ void Drawables::drawRedSquare(float x, float y, float size, sf::RenderWindow* wi
 	Rectangle->setPosition(x, y);
 	//Rectangle->setOutlineColor(sf::Color::Black);
 	Rectangle->setFillColor(sf::Color::Red);	
+	Rectangle->setOutlineColor(sf::Color::Black);
+	Rectangle->setOutlineThickness(1.f);
 
 	scene->addDrawable(Rectangle);
 }
@@ -25,6 +27,8 @@ void Drawables::drawBlueSquare(float x, float y, float size, sf::RenderWindow * 
 	Rectangle->setPosition(x, y);
 	//Rectangle->setOutlineColor(sf::Color::Black);
 	Rectangle->setFillColor(sf::Color::Blue);
+	Rectangle->setOutlineColor(sf::Color::Black);
+	Rectangle->setOutlineThickness(1.f);
 
 	scene->addDrawable(Rectangle);
 }
@@ -37,8 +41,24 @@ void Drawables::drawYellowSquare(float x, float y, float size, sf::RenderWindow 
 	Rectangle->setPosition(x, y);
 	//Rectangle->setOutlineColor(sf::Color::Black);
 	Rectangle->setFillColor(sf::Color::Yellow);
+	Rectangle->setOutlineColor(sf::Color::Black);
+	Rectangle->setOutlineThickness(1.f);
 
 	scene->addDrawable(Rectangle);
+}
+
+void Drawables::drawPlayer(float x, float y, float size, sf::RenderWindow * window)
+{
+	sf::RectangleShape* Player = new sf::RectangleShape();
+	Player->setSize(sf::Vector2f(size, size));
+	Player->setOrigin(Player->getSize().x / 2.0f, Player->getSize().y / 2.0f);
+	Player->setPosition(x, y);
+	//Rectangle->setOutlineColor(sf::Color::Black);
+	Player->setFillColor(sf::Color::Green);
+	Player->setOutlineColor(sf::Color::Black);
+	Player->setOutlineThickness(1.f);
+
+	scene->addDrawable(Player);
 }
 
 void Drawables::drawGrid(float x, float y, sf::RenderWindow * window)

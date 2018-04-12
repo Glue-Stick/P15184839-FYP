@@ -15,6 +15,8 @@ public:
 	void drawBlueSquare(float x, float y, float size, sf::RenderWindow* window);
 	void drawYellowSquare(float x, float y, float size, sf::RenderWindow* window);
 
+	void drawPlayer(float x, float y, float size, sf::RenderWindow* window);
+
 	void drawGrid(float x, float y, sf::RenderWindow* window);
 	void drawGridNumbers(float x, float y, sf::RenderWindow* window);
 
