@@ -2,9 +2,9 @@
 #include <iostream>
 #include <SFML\Window.hpp>
 #include <SFML\Graphics.hpp>
+#include <Box2D\Box2D.h>
 #include <vector>
 #include <Scene.h>
-#include <Box2D\Box2D.h>
 
 
 class Drawables
@@ -12,7 +12,7 @@ class Drawables
 public:
 	Scene* scene;
 	Drawables(Scene* scene);
-	void drawRedSquare(float x, float y, float size, float rotation, sf::RenderWindow* window, sf::Color color, b2World world);
+	void drawRedSquare(float x, float y, float size, float rotation, sf::RenderWindow* window, sf::Color color);
 	void drawBlueSquare(float x, float y, float size, float rotation, sf::RenderWindow* window, sf::Color color);
 	void drawYellowSquare(float x, float y, float size, float rotation, sf::RenderWindow* window, sf::Color color);
 
@@ -22,7 +22,6 @@ public:
 	void drawGridNumbers(float x, float y, sf::RenderWindow* window);
 
 	sf::Font Font;
-
 private:
 	
 protected:

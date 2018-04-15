@@ -8,7 +8,6 @@
 #include <Input.h>
 #include <imgui-master\imgui.h>
 #include <imgui-master\imgui-SFML.h>
-#include <Box2D\Box2D.h>
 
 class GameApp
 {

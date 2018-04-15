@@ -26,8 +26,8 @@ void GameApp::Run()
 	m_window->resetGLStates();
 	sf::Clock deltaClock;
 
-	b2Vec2 Gravity(0.f, 9.8f);
-	b2World World(Gravity);
+	/*b2Vec2 Gravity(0.f, 9.8f);
+	b2World World(Gravity);*/
 
 	//main application loop
 	while (m_window->isOpen())
@@ -87,7 +87,7 @@ void GameApp::Run()
 			if (ImGui::Button("Add Red Square"))
 			{
 				//ImGui::InputFloat3("Position X, Position Y, Size", location, 1, NULL);
-				input->draw->drawRedSquare(variables[0], variables[1], variables[2], variables[3], m_window, bgColor, World);
+				input->draw->drawRedSquare(variables[0], variables[1], variables[2], variables[3], m_window, bgColor);
 			}
 			if (ImGui::Button("Add Blue Square"))
 			{
@@ -170,7 +170,7 @@ void GameApp::Run()
 		ImGui::SFML::Render(m_window);
 		input->draw->drawGrid(700, 450, m_window);
 		input->draw->drawGridNumbers(0, 0, m_window);
-		
+
 		/*!< Simulate the world. */
 		//World.Step(1 / 60.f, 8, 3);
 
