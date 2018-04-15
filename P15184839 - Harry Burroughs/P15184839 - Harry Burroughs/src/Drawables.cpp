@@ -7,14 +7,14 @@ Drawables::Drawables(Scene* scene)
 	this->scene = scene;
 }
 
-void Drawables::drawRedSquare(float x, float y, float size, float rotation, sf::RenderWindow* window)
+void Drawables::drawRedSquare(float x, float y, float size, float rotation, sf::RenderWindow* window, sf::Color color)
 {
 	sf::RectangleShape* Rectangle =  new sf::RectangleShape();
 	Rectangle->setSize(sf::Vector2f(size, size));
 	Rectangle->setOrigin(Rectangle->getSize().x / 2.0f, Rectangle->getSize().y / 2.0f);
 	Rectangle->setPosition(x, y);
 	Rectangle->setRotation(rotation);
-	Rectangle->setFillColor(sf::Color::Red);	
+	Rectangle->setFillColor(color);
 	Rectangle->setOutlineColor(sf::Color::Black);
 	Rectangle->setOutlineThickness(1.f);
 
@@ -34,43 +34,43 @@ void Drawables::drawRedSquare(float x, float y, float size, float rotation, sf::
 	scene->addDrawable(Rectangle);
 }
 
-void Drawables::drawBlueSquare(float x, float y, float size, float rotation, sf::RenderWindow * window)
+void Drawables::drawBlueSquare(float x, float y, float size, float rotation, sf::RenderWindow * window, sf::Color color)
 {
 	sf::RectangleShape* Rectangle = new sf::RectangleShape();
 	Rectangle->setSize(sf::Vector2f(size, size));
 	Rectangle->setOrigin(Rectangle->getSize().x / 2.0f, Rectangle->getSize().y / 2.0f);
 	Rectangle->setPosition(x, y);
 	Rectangle->setRotation(rotation);
-	Rectangle->setFillColor(sf::Color::Blue);
+	Rectangle->setFillColor(color);
 	Rectangle->setOutlineColor(sf::Color::Black);
 	Rectangle->setOutlineThickness(1.f);
 
 	scene->addDrawable(Rectangle);
 }
 
-void Drawables::drawYellowSquare(float x, float y, float size, float rotation, sf::RenderWindow * window)
+void Drawables::drawYellowSquare(float x, float y, float size, float rotation, sf::RenderWindow * window, sf::Color color)
 {
 	sf::RectangleShape* Rectangle = new sf::RectangleShape();
 	Rectangle->setSize(sf::Vector2f(size, size));
 	Rectangle->setOrigin(Rectangle->getSize().x / 2.0f, Rectangle->getSize().y / 2.0f);
 	Rectangle->setPosition(x, y);
 	Rectangle->setRotation(rotation);
-	Rectangle->setFillColor(sf::Color::Yellow);
+	Rectangle->setFillColor(color);
 	Rectangle->setOutlineColor(sf::Color::Black);
 	Rectangle->setOutlineThickness(1.f);
 
 	scene->addDrawable(Rectangle);
 }
 
-void Drawables::drawPlayer(float x, float y, float size, float rotation, sf::RenderWindow * window)
+void Drawables::drawPlayer(float x, float y, float size, float rotation, sf::RenderWindow * window, sf::Color color)
 {
 	sf::RectangleShape* Player = new sf::RectangleShape();
 	Player->setSize(sf::Vector2f(size, size));
 	Player->setOrigin(Player->getSize().x / 2.0f, Player->getSize().y / 2.0f);
 	Player->setPosition(x, y);
 	Player->setRotation(rotation);
-	Player->setFillColor(sf::Color::Green);
-	Player->setOutlineColor(sf::Color::Black);
+	Player->setFillColor(color);
+	Player->setOutlineColor(color);
 	Player->setOutlineThickness(1.f);
 
 	scene->addDrawable(Player);
