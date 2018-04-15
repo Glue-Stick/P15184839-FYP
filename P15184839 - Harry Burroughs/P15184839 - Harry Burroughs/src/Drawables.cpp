@@ -5,9 +5,10 @@ static const float SCALE = 30.f; /*!< We need this to easily convert between pix
 Drawables::Drawables(Scene* scene)
 {
 	this->scene = scene;
+	
 }
 
-void Drawables::drawRedSquare(float x, float y, float size, float rotation, sf::RenderWindow* window, sf::Color color)
+void Drawables::drawRedSquare(float x, float y, float size, float rotation, sf::RenderWindow* window, sf::Color color, b2World world)
 {
 	sf::RectangleShape* Rectangle =  new sf::RectangleShape();
 	Rectangle->setSize(sf::Vector2f(size, size));
@@ -18,18 +19,18 @@ void Drawables::drawRedSquare(float x, float y, float size, float rotation, sf::
 	Rectangle->setOutlineColor(sf::Color::Black);
 	Rectangle->setOutlineThickness(1.f);
 
-	//b2BodyDef BodyDef;
-	//BodyDef.position = b2Vec2(x / SCALE, y / SCALE); /*!< Creates the object at the x and y coordinates passed in when the object is called in the draw function */
-	//BodyDef.type = b2_dynamicBody;
-	//b2Body* Body3 = world.CreateBody(&BodyDef);
-	////Body3->SetUserData((void*)4); /*!< Sets the user data, which will be used when reseting the map and drawing the sprite to the object. */
+	b2BodyDef BodyDef;
+	BodyDef.position = b2Vec2(x / 30.f, y / 30.f); /*!< Creates the object at the x and y coordinates passed in when the object is called in the draw function */
+	BodyDef.type = b2_dynamicBody;
+	b2Body* Body3 = world.CreateBody(&BodyDef);
+	Body3->SetUserData((void*)4); /*!< Sets the user data, which will be used when reseting the map and drawing the sprite to the object. */
 
-	//b2PolygonShape obstacle;
-	//obstacle.SetAsBox((50.f / 2) / SCALE, (50.f / 2) / SCALE); /*!< Creates a box shape, divided by the desired width and height. */
-	//b2FixtureDef FixtureDef;
-	//FixtureDef.density = 0.f; /*!< Sets the density of the body. */
-	//FixtureDef.shape = &obstacle; /*!< Sets the shape. */
-	//Body3->CreateFixture(&FixtureDef);
+	b2PolygonShape obstacle;
+	obstacle.SetAsBox((50.f / 2) / 30.f, (50.f / 2) / 30.f); /*!< Creates a box shape, divided by the desired width and height. */
+	b2FixtureDef FixtureDef;
+	FixtureDef.density = 0.f; /*!< Sets the density of the body. */
+	FixtureDef.shape = &obstacle; /*!< Sets the shape. */
+	Body3->CreateFixture(&FixtureDef);
 
 	scene->addDrawable(Rectangle);
 }
