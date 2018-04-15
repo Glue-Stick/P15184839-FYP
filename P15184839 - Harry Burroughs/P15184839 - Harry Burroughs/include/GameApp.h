@@ -18,6 +18,7 @@ public:
 
 	//Main Application loop
 	void Run();
+	bool gameMode = true;
 
 	sf::RenderWindow* m_window;
 	int noOfPlayers = 0;

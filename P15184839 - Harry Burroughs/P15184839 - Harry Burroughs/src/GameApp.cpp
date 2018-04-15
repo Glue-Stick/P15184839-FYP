@@ -41,90 +41,98 @@ void GameApp::Run()
 			ImGui::SFML::ProcessEvent(e);
 			if (e.type == sf::Event::Closed)
 				m_window->close();
-			//input->InputHandler(e, m_window);
+			//only detects input if mode is in test level mode
+			if (gameMode == false)
+			{
+				input->InputHandler(e, m_window);
+			}
 		}	
 
 		ImGui::SFML::Update(m_window, deltaClock.restart());
 
-		ImGui::Begin("Sample Window"); //begin window
+		//only available if the mode is in level editor
+		if (gameMode == true)
+		{
+			ImGui::Begin("Sample Window"); //begin window
 
-		//background colour edit
-		if (ImGui::ColorEdit3("Background Colour", color))
-		{
-			//this code gets called if color value changes, so the background colour is upgraded automatically
-			bgColor.r = static_cast<sf::Uint8>(color[0] * 255.f);
-			bgColor.g = static_cast<sf::Uint8>(color[1] * 255.f);
-			bgColor.b = static_cast<sf::Uint8>(color[2] * 255.f);
-		}
-
-		//winodw title text edit
-		ImGui::InputText("Window title", windowTitle, 255);
-
-		if (ImGui::Button("Update window title"))
-		{
-			//this code gets if user clicks on the button
-			m_window->setTitle(windowTitle);
-		}
-		ImGui::End();
-
-		ImGui::Begin("Add Shapes");
-
-		if (ImGui::InputFloat4("Variable Input", variables))
-		{
-			usedVariables[0] = static_cast<sf::Uint8>(variables[0] * 1.f);
-			usedVariables[1] = static_cast<sf::Uint8>(variables[1] * 1.f);
-			usedVariables[2] = static_cast<sf::Uint8>(variables[2] * 1.f);
-			usedVariables[3] = static_cast<sf::Uint8>(variables[3] * 1.f);
-		}
-
-		if (ImGui::Button("Add Red Square"))
-		{
-			//ImGui::InputFloat3("Position X, Position Y, Size", location, 1, NULL);
-			input->draw->drawRedSquare(variables[0], variables[1], variables[2], variables[3], m_window, bgColor);
-		}
-		if (ImGui::Button("Add Blue Square"))
-		{
-			input->draw->drawBlueSquare(variables[0], variables[1], variables[2], variables[3], m_window, bgColor);
-		}
-		if (ImGui::Button("Add Yellow Square"))
-		{
-			input->draw->drawYellowSquare(variables[0], variables[1], variables[2], variables[3], m_window, bgColor);
-		}
-		if (noOfPlayers < 1)
-		{
-			if (ImGui::Button("Add Player Square"))
+										   //object colour edit
+			if (ImGui::ColorEdit3("Object Colour", color))
 			{
-				input->draw->drawPlayer(variables[0], variables[1], variables[2], variables[3], m_window, bgColor);
-				noOfPlayers++;
+				//this code gets called if color value changes, so the background colour is upgraded automatically
+				bgColor.r = static_cast<sf::Uint8>(color[0] * 255.f);
+				bgColor.g = static_cast<sf::Uint8>(color[1] * 255.f);
+				bgColor.b = static_cast<sf::Uint8>(color[2] * 255.f);
 			}
-		}		
-		if (ImGui::Button("Clear Shapes"))
-		{
-			scene->clear();
-			noOfPlayers = 0;
-		}
 
-		ImGui::End();
+			//winodw title text edit
+			ImGui::InputText("Window title", windowTitle, 255);
 
-		ImGui::Begin("Save Level");
+			if (ImGui::Button("Update window title"))
+			{
+				//this code gets if user clicks on the button
+				m_window->setTitle(windowTitle);
+			}
+			ImGui::End();
 
-		if (ImGui::Button("Save Level to Slot 1"))
-		{
-			scene->save1();
-			noOfPlayers = 0;
-		}
-		if (ImGui::Button("Save Level to Slot 2"))
-		{
-			scene->save2();
-			noOfPlayers = 0;
-		}
-		if (ImGui::Button("Save Level to Slot 3"))
-		{
-			scene->save3();
-			noOfPlayers = 0;
-		}
+			ImGui::Begin("Add Shapes");
 
-		ImGui::End();
+			if (ImGui::InputFloat4("Variable Input", variables))
+			{
+				usedVariables[0] = static_cast<sf::Uint8>(variables[0] * 1.f);
+				usedVariables[1] = static_cast<sf::Uint8>(variables[1] * 1.f);
+				usedVariables[2] = static_cast<sf::Uint8>(variables[2] * 1.f);
+				usedVariables[3] = static_cast<sf::Uint8>(variables[3] * 1.f);
+			}
+
+			if (ImGui::Button("Add Red Square"))
+			{
+				//ImGui::InputFloat3("Position X, Position Y, Size", location, 1, NULL);
+				input->draw->drawRedSquare(variables[0], variables[1], variables[2], variables[3], m_window, bgColor);
+			}
+			if (ImGui::Button("Add Blue Square"))
+			{
+				input->draw->drawBlueSquare(variables[0], variables[1], variables[2], variables[3], m_window, bgColor);
+			}
+			if (ImGui::Button("Add Yellow Square"))
+			{
+				input->draw->drawYellowSquare(variables[0], variables[1], variables[2], variables[3], m_window, bgColor);
+			}
+			if (noOfPlayers < 1)
+			{
+				if (ImGui::Button("Add Player Square"))
+				{
+					input->draw->drawPlayer(variables[0], variables[1], variables[2], variables[3], m_window, bgColor);
+					noOfPlayers++;
+				}
+			}
+			if (ImGui::Button("Clear Shapes"))
+			{
+				scene->clear();
+				noOfPlayers = 0;
+			}
+
+			ImGui::End();
+
+			ImGui::Begin("Save Level");
+
+			if (ImGui::Button("Save Level to Slot 1"))
+			{
+				scene->save1();
+				noOfPlayers = 0;
+			}
+			if (ImGui::Button("Save Level to Slot 2"))
+			{
+				scene->save2();
+				noOfPlayers = 0;
+			}
+			if (ImGui::Button("Save Level to Slot 3"))
+			{
+				scene->save3();
+				noOfPlayers = 0;
+			}
+
+			ImGui::End();
+		}
 
 		ImGui::Begin("Load Level");
 
@@ -142,6 +150,18 @@ void GameApp::Run()
 		{
 			scene->load3();
 			noOfPlayers = 1;
+		}
+
+		ImGui::End();
+
+		ImGui::Begin("Swap Mode");
+		if (ImGui::Button("Editor Mode"))
+		{
+			gameMode = true;
+		}
+		if (ImGui::Button("Test Level Mode"))
+		{
+			gameMode = false;
 		}
 
 		ImGui::End();
