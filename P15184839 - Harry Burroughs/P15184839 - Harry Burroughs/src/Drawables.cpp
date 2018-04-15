@@ -7,14 +7,14 @@ Drawables::Drawables(Scene* scene)
 	this->scene = scene;
 }
 
-void Drawables::drawRedSquare(float x, float y, float size, float rotation, sf::RenderWindow* window, sf::Color colour)
+void Drawables::drawRedSquare(float x, float y, float size, float rotation, sf::RenderWindow* window)
 {
 	sf::RectangleShape* Rectangle =  new sf::RectangleShape();
 	Rectangle->setSize(sf::Vector2f(size, size));
 	Rectangle->setOrigin(Rectangle->getSize().x / 2.0f, Rectangle->getSize().y / 2.0f);
 	Rectangle->setPosition(x, y);
 	Rectangle->setRotation(rotation);
-	Rectangle->setFillColor(colour);	
+	Rectangle->setFillColor(sf::Color::Red);	
 	Rectangle->setOutlineColor(sf::Color::Black);
 	Rectangle->setOutlineThickness(1.f);
 

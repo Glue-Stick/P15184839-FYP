@@ -316,3 +316,4 @@ ASALocalRun/
 
 # All debug files
 IMAT3606-Labs/Debug/
+*.exe

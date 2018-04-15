@@ -46,10 +46,10 @@ void GameApp::Run()
 
 		ImGui::SFML::Update(m_window, deltaClock.restart());
 
-		ImGui::Begin("Colour Window"); //begin window
+		ImGui::Begin("Sample Window"); //begin window
 
 		//background colour edit
-		if (ImGui::ColorEdit3("Object Colour", color))
+		if (ImGui::ColorEdit3("Background Colour", color))
 		{
 			//this code gets called if color value changes, so the background colour is upgraded automatically
 			bgColor.r = static_cast<sf::Uint8>(color[0] * 255.f);
@@ -71,30 +71,30 @@ void GameApp::Run()
 
 		if (ImGui::InputFloat4("Variable Input", variables))
 		{
-			usedVariables[0] = static_cast<sf::Uint8>(variables[0] * 1.f);
-			usedVariables[1] = static_cast<sf::Uint8>(variables[1] * 1.f);
-			usedVariables[2] = static_cast<sf::Uint8>(variables[2] * 1.f);
-			usedVariables[3] = static_cast<sf::Uint8>(variables[3] * 1.f);
+			variables[0] = static_cast<sf::Uint8>(usedVariables[0] * 1.f);
+			variables[1] = static_cast<sf::Uint8>(usedVariables[1] * 1.f);
+			variables[2] = static_cast<sf::Uint8>(usedVariables[2] * 1.f);
+			variables[3] = static_cast<sf::Uint8>(usedVariables[3] * 1.f);
 		}
 
 		if (ImGui::Button("Add Red Square"))
 		{
 			//ImGui::InputFloat3("Position X, Position Y, Size", location, 1, NULL);
-			input->draw->drawRedSquare(variables[0], variables[1], variables[2], variables[3], m_window, bgColor);
+			input->draw->drawRedSquare(usedVariables[0], usedVariables[1], usedVariables[2], usedVariables[3], m_window);
 		}
 		if (ImGui::Button("Add Blue Square"))
 		{
-			input->draw->drawBlueSquare(variables[0], variables[1], variables[2], variables[3], m_window);
+			input->draw->drawBlueSquare(100, 350, 20.f, 0, m_window);
 		}
 		if (ImGui::Button("Add Yellow Square"))
 		{
-			input->draw->drawYellowSquare(variables[0], variables[1], variables[2], variables[3], m_window);
+			input->draw->drawYellowSquare(1300, 200, 20.f, 0, m_window);
 		}
 		if (noOfPlayers < 1)
 		{
 			if (ImGui::Button("Add Player Square"))
 			{
-				input->draw->drawPlayer(variables[0], variables[1], variables[2], variables[3], m_window);
+				input->draw->drawPlayer(500, 800, 20.f, 0, m_window);
 				noOfPlayers++;
 			}
 		}		
@@ -146,7 +146,7 @@ void GameApp::Run()
 
 		ImGui::End();
 
-		m_window->clear(sf::Color::White);
+		m_window->clear(bgColor);
 		ImGui::SFML::Render(m_window);
 		input->draw->drawGrid(700, 450, m_window);
 		input->draw->drawGridNumbers(0, 0, m_window);
