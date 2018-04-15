@@ -12,9 +12,9 @@ class Drawables
 public:
 	Scene* scene;
 	Drawables(Scene* scene);
-	void drawRedSquare(float x, float y, float size, float rotation, sf::RenderWindow* window, sf::Color color);
-	void drawBlueSquare(float x, float y, float size, float rotation, sf::RenderWindow* window, sf::Color color);
-	void drawYellowSquare(float x, float y, float size, float rotation, sf::RenderWindow* window, sf::Color color);
+	void drawSquare(float x, float y, float size, float rotation, sf::RenderWindow* window, sf::Color color);
+	void drawRectangle(float x, float y, float size, float rotation, sf::RenderWindow* window, sf::Color color);
+	void drawCircle(float x, float y, float size, float rotation, sf::RenderWindow* window, sf::Color color);
 
 	void drawPlayer(float x, float y, float size, float rotation, sf::RenderWindow* window, sf::Color color);
 

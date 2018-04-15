@@ -84,18 +84,18 @@ void GameApp::Run()
 				usedVariables[3] = static_cast<sf::Uint8>(variables[3] * 1.f);
 			}
 
-			if (ImGui::Button("Add Red Square"))
+			if (ImGui::Button("Add Square"))
 			{
 				//ImGui::InputFloat3("Position X, Position Y, Size", location, 1, NULL);
-				input->draw->drawRedSquare(variables[0], variables[1], variables[2], variables[3], m_window, bgColor);
+				input->draw->drawSquare(variables[0], variables[1], variables[2], variables[3], m_window, bgColor);
 			}
-			if (ImGui::Button("Add Blue Square"))
+			if (ImGui::Button("Add Rectangle"))
 			{
-				input->draw->drawBlueSquare(variables[0], variables[1], variables[2], variables[3], m_window, bgColor);
+				input->draw->drawRectangle(variables[0], variables[1], variables[2], variables[3], m_window, bgColor);
 			}
-			if (ImGui::Button("Add Yellow Square"))
+			if (ImGui::Button("Add Circle"))
 			{
-				input->draw->drawYellowSquare(variables[0], variables[1], variables[2], variables[3], m_window, bgColor);
+				input->draw->drawCircle(variables[0], variables[1], variables[2], variables[3], m_window, bgColor);
 			}
 			if (noOfPlayers < 1)
 			{

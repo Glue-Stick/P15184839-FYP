@@ -7,7 +7,7 @@ Drawables::Drawables(Scene* scene)
 	this->scene = scene;
 }
 
-void Drawables::drawRedSquare(float x, float y, float size, float rotation, sf::RenderWindow* window, sf::Color color)
+void Drawables::drawSquare(float x, float y, float size, float rotation, sf::RenderWindow* window, sf::Color color)
 {
 	sf::RectangleShape* Rectangle =  new sf::RectangleShape();
 	Rectangle->setSize(sf::Vector2f(size, size));
@@ -34,10 +34,10 @@ void Drawables::drawRedSquare(float x, float y, float size, float rotation, sf::
 	scene->addDrawable(Rectangle);
 }
 
-void Drawables::drawBlueSquare(float x, float y, float size, float rotation, sf::RenderWindow * window, sf::Color color)
+void Drawables::drawRectangle(float x, float y, float size, float rotation, sf::RenderWindow * window, sf::Color color)
 {
 	sf::RectangleShape* Rectangle = new sf::RectangleShape();
-	Rectangle->setSize(sf::Vector2f(size, size));
+	Rectangle->setSize(sf::Vector2f(size, size/2));
 	Rectangle->setOrigin(Rectangle->getSize().x / 2.0f, Rectangle->getSize().y / 2.0f);
 	Rectangle->setPosition(x, y);
 	Rectangle->setRotation(rotation);
@@ -48,18 +48,20 @@ void Drawables::drawBlueSquare(float x, float y, float size, float rotation, sf:
 	scene->addDrawable(Rectangle);
 }
 
-void Drawables::drawYellowSquare(float x, float y, float size, float rotation, sf::RenderWindow * window, sf::Color color)
+void Drawables::drawCircle(float x, float y, float size, float rotation, sf::RenderWindow * window, sf::Color color)
 {
-	sf::RectangleShape* Rectangle = new sf::RectangleShape();
-	Rectangle->setSize(sf::Vector2f(size, size));
-	Rectangle->setOrigin(Rectangle->getSize().x / 2.0f, Rectangle->getSize().y / 2.0f);
-	Rectangle->setPosition(x, y);
-	Rectangle->setRotation(rotation);
-	Rectangle->setFillColor(color);
-	Rectangle->setOutlineColor(sf::Color::Black);
-	Rectangle->setOutlineThickness(1.f);
+	
 
-	scene->addDrawable(Rectangle);
+	sf::CircleShape* Circle = new sf::CircleShape();
+	Circle->setRadius(size);
+	Circle->setOrigin(Circle->getRadius(), Circle->getRadius());
+	Circle->setPosition(x, y);
+	Circle->setRotation(rotation);
+	Circle->setFillColor(color);
+	Circle->setOutlineColor(sf::Color::Black);
+	Circle->setOutlineThickness(1.f);
+
+	scene->addDrawable(Circle);
 }
 
 void Drawables::drawPlayer(float x, float y, float size, float rotation, sf::RenderWindow * window, sf::Color color)
