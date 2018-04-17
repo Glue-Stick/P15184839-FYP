@@ -20,6 +20,12 @@ void GameApp::Run()
 	float variables[4] = { 700.f, 450.f, 20.f, 0.f };
 	float usedVariables[4];
 
+	float physics[2] = { 9.8, 0 };
+	float usedPhysics[2];
+
+	int physicsOption[1] = { 1 };
+	int usedPhysicsOption;
+
 	char windowTitle[255] = "Final Year Project";
 
 	m_window->setTitle(windowTitle);
@@ -79,28 +85,44 @@ void GameApp::Run()
 				usedVariables[2] = static_cast<sf::Uint8>(variables[2] * 1.f);
 				usedVariables[3] = static_cast<sf::Uint8>(variables[3] * 1.f);
 			}
+			if (ImGui::InputInt("Physics Affected: 1 = Yes, 0 = No", physicsOption))
+			{
+				usedPhysicsOption = static_cast<sf::Uint8>(physicsOption[0] * 1.f);
+			}
 
 			if (ImGui::Button("Add Square"))
 			{
 				//ImGui::InputFloat3("Position X, Position Y, Size", location, 1, NULL);
-				input->draw->drawSquare(variables[0], variables[1], variables[2], variables[3], m_window, bgColor);
+				input->draw->drawSquare(variables[0], variables[1], variables[2], variables[3], m_window, bgColor, usedPhysicsOption);
 				
 			}
 			if (ImGui::Button("Add Rectangle"))
 			{
-				input->draw->drawRectangle(variables[0], variables[1], variables[2], variables[3], m_window, bgColor);
+				input->draw->drawRectangle(variables[0], variables[1], variables[2], variables[3], m_window, bgColor, usedPhysicsOption);
 			}
 			if (ImGui::Button("Add Circle"))
 			{
-				input->draw->drawCircle(variables[0], variables[1], variables[2], variables[3], m_window, bgColor);
+				input->draw->drawCircle(variables[0], variables[1], variables[2], variables[3], m_window, bgColor, usedPhysicsOption);
+			}
+			if (ImGui::Button("Add Triangle"))
+			{
+				input->draw->drawTriangle(variables[0], variables[1], variables[2], variables[3], m_window, bgColor, usedPhysicsOption);
 			}
 			if (noOfPlayers < 1)
 			{
 				if (ImGui::Button("Add Player Square"))
 				{
-					input->draw->drawPlayer(variables[0], variables[1], variables[2], variables[3], m_window, bgColor);
+					scene->addPlayer(variables[0], variables[1], variables[2], variables[3], m_window, bgColor);
 					noOfPlayers++;
 				}
+			}
+			if (ImGui::Button("Undo"))
+			{
+				if (scene->shapesToBeDrawn.size() > 0)
+				{
+					scene->Undo();
+				}
+					
 			}
 			if (ImGui::Button("Clear Shapes"))
 			{
@@ -130,6 +152,16 @@ void GameApp::Run()
 
 			ImGui::End();
 		}
+
+		ImGui::Begin("Physics: Gravity, Player Speed");
+
+		if (ImGui::InputFloat2("Physics Input", physics))
+		{
+			usedPhysics[0] = static_cast<sf::Uint8>(physics[0] * 30.f);
+			usedPhysics[1] = static_cast<sf::Uint8>(physics[1] * 1.f);
+		}
+
+		ImGui::End();
 
 		ImGui::Begin("Load Level");
 
@@ -168,16 +200,15 @@ void GameApp::Run()
 		input->draw->drawGrid(700, 450, m_window);
 		input->draw->drawGridNumbers(0, 0, m_window);
 
-		/*!< Simulate the world. */
-		//World.Step(1 / 60.f, 8, 3);
-
 		//only detects input if mode is in test level mode
 		if (gameMode == false)
 		{
 			input->InputHandler(e, m_window);
+			scene->update(m_window, physics[0], physics[1]);
 		}
 
 		scene->render(m_window);
+		
 		//present it to that screen
 		m_window->display();
 	}

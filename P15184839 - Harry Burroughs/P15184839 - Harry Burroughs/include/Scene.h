@@ -2,14 +2,24 @@
 #include <SFML\Graphics.hpp>
 #include <SFML\Window.hpp>
 #include <vector>
+#include <Collision.h>
+#include <Objects.h>
+#include <Player.h>
 
 class Scene
 {
 public:
 	Scene();
-	void addDrawable(sf::Drawable* shape);
+	Objects* object;
+	void addDrawable(Objects* shape);
+	void addToGrid(sf::Drawable* grid);
+	void Undo();
 	void addText(sf::Text* text);
 	void render(sf::RenderWindow* window);
+	void update(sf::RenderWindow* window, float power, float speed);
+
+	void addPlayer(float x, float y, float size, float rotation, sf::RenderWindow * window, sf::Color color);
+
 	void clear();
 	void save1();
 	void save2();
@@ -17,11 +27,15 @@ public:
 	void load1();
 	void load2();
 	void load3();
-private:
-	std::vector<sf::Drawable*> shapesToBeDrawn;
+
+	std::vector<Objects*> shapesToBeDrawn;
 	std::vector<sf::Drawable*> gridToBeDrawn;
-	std::vector<sf::Drawable*> Level1;
-	std::vector<sf::Drawable*> Level2;
-	std::vector<sf::Drawable*> Level3;
+	std::vector<Objects*> Level1;
+	std::vector<Objects*> Level2;
+	std::vector<Objects*> Level3;
+
+	Player* player = nullptr;
+private:
+	
 protected:
 };

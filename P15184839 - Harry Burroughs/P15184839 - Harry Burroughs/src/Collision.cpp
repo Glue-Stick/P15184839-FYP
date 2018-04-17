@@ -1,7 +1,9 @@
 #include "Collision.h"
 
-Collision::Collision()
+Collision::Collision(bool applyGravity, bool staticObject)
 {
+	m_Gravity = applyGravity;
+	m_staticCollider = staticObject;
 }
 
 Collision::~Collision()
@@ -56,4 +58,32 @@ bool Collision::checkCollision(Collision & other, float push)
 	}
 
 	return false;
+}
+
+void Collision::applyForce(sf::Vector2f direction, float power)
+{
+	if (!m_staticCollider)
+	{
+		m_velocity += direction * power * (1.f / 60.f);
+	}	
+}
+
+void Collision::isStatic(bool wontMove)
+{
+	m_staticCollider = wontMove;
+}
+
+void Collision::move()
+{
+	m_position += m_velocity;
+}
+
+void Collision::Update(float power)
+{
+	//m_velocity = sf::Vector2f(0.f,0.f);
+	if (m_Gravity)
+	{
+		applyForce(sf::Vector2f(0, 1), (power * 30.f));
+	}
+	
 }

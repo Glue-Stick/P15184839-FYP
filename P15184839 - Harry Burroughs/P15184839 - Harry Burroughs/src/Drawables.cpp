@@ -7,50 +7,27 @@ Drawables::Drawables(Scene* scene)
 	this->scene = scene;
 }
 
-void Drawables::drawSquare(float x, float y, float size, float rotation, sf::RenderWindow* window, sf::Color color)
+void Drawables::drawSquare(float x, float y, float size, float rotation, sf::RenderWindow* window, sf::Color color, bool physics)
 {
-	scene->addDrawable(new Objects(sf::Vector2f(x, y), sf::Vector2f(size, size), color));
+	scene->addDrawable(new Objects(sf::Vector2f(x, y), sf::Vector2f(size, size), color, physics));
 }
 
-void Drawables::drawRectangle(float x, float y, float size, float rotation, sf::RenderWindow * window, sf::Color color)
+void Drawables::drawRectangle(float x, float y, float size, float rotation, sf::RenderWindow * window, sf::Color color, bool physics)
 {
-	/*Rectangle->setSize(sf::Vector2f(size, size/2));
-	Rectangle->setOrigin(Rectangle->getSize().x / 2.0f, Rectangle->getSize().y / 2.0f);
-	Rectangle->setPosition(x, y);
-	Rectangle->setRotation(rotation);
-	Rectangle->setFillColor(color);
-	Rectangle->setOutlineColor(sf::Color::Black);
-	Rectangle->setOutlineThickness(1.f);
-
-	scene->addDrawable(Rectangle);*/
+	scene->addDrawable(new Objects(sf::Vector2f(x, y), sf::Vector2f(size, (size / 2)), color, physics));
 }
 
-void Drawables::drawCircle(float x, float y, float size, float rotation, sf::RenderWindow * window, sf::Color color)
+void Drawables::drawCircle(float x, float y, float size, float rotation, sf::RenderWindow * window, sf::Color color, bool physics)
 {
-	sf::CircleShape* Circle = new sf::CircleShape();
-	Circle->setRadius(size);
-	Circle->setOrigin(Circle->getRadius(), Circle->getRadius());
-	Circle->setPosition(x, y);
-	Circle->setRotation(rotation);
-	Circle->setFillColor(color);
-	Circle->setOutlineColor(sf::Color::Black);
-	Circle->setOutlineThickness(1.f);
-
-	scene->addDrawable(Circle);
+	scene->addDrawable(new Objects(sf::Vector2f(x,y), size, color, physics));
 }
 
-void Drawables::drawPlayer(float x, float y, float size, float rotation, sf::RenderWindow * window, sf::Color color)
+void Drawables::drawTriangle(float x, float y, float size, float rotation, sf::RenderWindow * window, sf::Color color, bool physics)
 {
-	/*Rectangle->setSize(sf::Vector2f(size, size));
-	Rectangle->setOrigin(Rectangle->getSize().x / 2.0f, Rectangle->getSize().y / 2.0f);
-	Rectangle->setPosition(x, y);
-	Rectangle->setRotation(rotation);
-	Rectangle->setFillColor(color);
-	Rectangle->setOutlineColor(color);
-	Rectangle->setOutlineThickness(1.f);
-
-	scene->addDrawable(Rectangle);*/
+	scene->addDrawable(new Objects(sf::Vector2f(x, y), size, 3, color, physics));
 }
+
+
 
 void Drawables::drawGrid(float x, float y, sf::RenderWindow * window)
 {
@@ -61,7 +38,7 @@ void Drawables::drawGrid(float x, float y, sf::RenderWindow * window)
 	Horizontal1->setPosition(x, y);
 	Horizontal1->setFillColor(sf::Color::Black);
 
-	scene->addDrawable(Horizontal1);
+	scene->addToGrid(Horizontal1);
 
 	sf::RectangleShape* Horizontal2 = new sf::RectangleShape();
 	Horizontal2->setSize(sf::Vector2f(1400.f, 1.f));
@@ -69,7 +46,7 @@ void Drawables::drawGrid(float x, float y, sf::RenderWindow * window)
 	Horizontal2->setPosition(x, y + 50);
 	Horizontal2->setFillColor(sf::Color::Black);
 
-	scene->addDrawable(Horizontal2);
+	scene->addToGrid(Horizontal2);
 
 	sf::RectangleShape* Horizontal3 = new sf::RectangleShape();
 	Horizontal3->setSize(sf::Vector2f(1400.f, 1.f));
@@ -77,7 +54,7 @@ void Drawables::drawGrid(float x, float y, sf::RenderWindow * window)
 	Horizontal3->setPosition(x, y + 100);
 	Horizontal3->setFillColor(sf::Color::Black);
 
-	scene->addDrawable(Horizontal3);
+	scene->addToGrid(Horizontal3);
 
 	sf::RectangleShape* Horizontal4 = new sf::RectangleShape();
 	Horizontal4->setSize(sf::Vector2f(1400.f, 1.f));
@@ -85,7 +62,7 @@ void Drawables::drawGrid(float x, float y, sf::RenderWindow * window)
 	Horizontal4->setPosition(x, y + 150);
 	Horizontal4->setFillColor(sf::Color::Black);
 
-	scene->addDrawable(Horizontal4);
+	scene->addToGrid(Horizontal4);
 
 	sf::RectangleShape* Horizontal5 = new sf::RectangleShape();
 	Horizontal5->setSize(sf::Vector2f(1400.f, 1.f));
@@ -93,7 +70,7 @@ void Drawables::drawGrid(float x, float y, sf::RenderWindow * window)
 	Horizontal5->setPosition(x, y + 200);
 	Horizontal5->setFillColor(sf::Color::Black);
 
-	scene->addDrawable(Horizontal5);
+	scene->addToGrid(Horizontal5);
 
 	sf::RectangleShape* Horizontal6 = new sf::RectangleShape();
 	Horizontal6->setSize(sf::Vector2f(1400.f, 1.f));
@@ -101,7 +78,7 @@ void Drawables::drawGrid(float x, float y, sf::RenderWindow * window)
 	Horizontal6->setPosition(x, y + 250);
 	Horizontal6->setFillColor(sf::Color::Black);
 
-	scene->addDrawable(Horizontal6);
+	scene->addToGrid(Horizontal6);
 
 	sf::RectangleShape* Horizontal7 = new sf::RectangleShape();
 	Horizontal7->setSize(sf::Vector2f(1400.f, 1.f));
@@ -109,7 +86,7 @@ void Drawables::drawGrid(float x, float y, sf::RenderWindow * window)
 	Horizontal7->setPosition(x, y + 300);
 	Horizontal7->setFillColor(sf::Color::Black);
 
-	scene->addDrawable(Horizontal7);
+	scene->addToGrid(Horizontal7);
 
 	sf::RectangleShape* Horizontal8 = new sf::RectangleShape();
 	Horizontal8->setSize(sf::Vector2f(1400.f, 1.f));
@@ -117,7 +94,7 @@ void Drawables::drawGrid(float x, float y, sf::RenderWindow * window)
 	Horizontal8->setPosition(x, y + 350);
 	Horizontal8->setFillColor(sf::Color::Black);
 
-	scene->addDrawable(Horizontal8);
+	scene->addToGrid(Horizontal8);
 
 	sf::RectangleShape* Horizontal9 = new sf::RectangleShape();
 	Horizontal9->setSize(sf::Vector2f(1400.f, 1.f));
@@ -125,7 +102,7 @@ void Drawables::drawGrid(float x, float y, sf::RenderWindow * window)
 	Horizontal9->setPosition(x, y + 400);
 	Horizontal9->setFillColor(sf::Color::Black);
 
-	scene->addDrawable(Horizontal9);
+	scene->addToGrid(Horizontal9);
 
 	sf::RectangleShape* Horizontal10 = new sf::RectangleShape();
 	Horizontal10->setSize(sf::Vector2f(1400.f, 1.f));
@@ -133,7 +110,7 @@ void Drawables::drawGrid(float x, float y, sf::RenderWindow * window)
 	Horizontal10->setPosition(x, y - 50);
 	Horizontal10->setFillColor(sf::Color::Black);
 
-	scene->addDrawable(Horizontal10);
+	scene->addToGrid(Horizontal10);
 
 	sf::RectangleShape* Horizontal11 = new sf::RectangleShape();
 	Horizontal11->setSize(sf::Vector2f(1400.f, 1.f));
@@ -141,7 +118,7 @@ void Drawables::drawGrid(float x, float y, sf::RenderWindow * window)
 	Horizontal11->setPosition(x, y - 100);
 	Horizontal11->setFillColor(sf::Color::Black);
 
-	scene->addDrawable(Horizontal11);
+	scene->addToGrid(Horizontal11);
 
 	sf::RectangleShape* Horizontal12 = new sf::RectangleShape();
 	Horizontal12->setSize(sf::Vector2f(1400.f, 1.f));
@@ -149,7 +126,7 @@ void Drawables::drawGrid(float x, float y, sf::RenderWindow * window)
 	Horizontal12->setPosition(x, y - 150);
 	Horizontal12->setFillColor(sf::Color::Black);
 
-	scene->addDrawable(Horizontal12);
+	scene->addToGrid(Horizontal12);
 
 	sf::RectangleShape* Horizontal13 = new sf::RectangleShape();
 	Horizontal13->setSize(sf::Vector2f(1400.f, 1.f));
@@ -157,7 +134,7 @@ void Drawables::drawGrid(float x, float y, sf::RenderWindow * window)
 	Horizontal13->setPosition(x, y - 200);
 	Horizontal13->setFillColor(sf::Color::Black);
 
-	scene->addDrawable(Horizontal13);
+	scene->addToGrid(Horizontal13);
 
 	sf::RectangleShape* Horizontal14 = new sf::RectangleShape();
 	Horizontal14->setSize(sf::Vector2f(1400.f, 1.f));
@@ -165,7 +142,7 @@ void Drawables::drawGrid(float x, float y, sf::RenderWindow * window)
 	Horizontal14->setPosition(x, y - 250);
 	Horizontal14->setFillColor(sf::Color::Black);
 
-	scene->addDrawable(Horizontal14);
+	scene->addToGrid(Horizontal14);
 
 	sf::RectangleShape* Horizontal15 = new sf::RectangleShape();
 	Horizontal15->setSize(sf::Vector2f(1400.f, 1.f));
@@ -173,7 +150,7 @@ void Drawables::drawGrid(float x, float y, sf::RenderWindow * window)
 	Horizontal15->setPosition(x, y - 300);
 	Horizontal15->setFillColor(sf::Color::Black);
 
-	scene->addDrawable(Horizontal15);
+	scene->addToGrid(Horizontal15);
 
 	sf::RectangleShape* Horizontal16 = new sf::RectangleShape();
 	Horizontal16->setSize(sf::Vector2f(1400.f, 1.f));
@@ -181,7 +158,7 @@ void Drawables::drawGrid(float x, float y, sf::RenderWindow * window)
 	Horizontal16->setPosition(x, y - 350);
 	Horizontal16->setFillColor(sf::Color::Black);
 
-	scene->addDrawable(Horizontal16);
+	scene->addToGrid(Horizontal16);
 
 	sf::RectangleShape* Horizontal17 = new sf::RectangleShape();
 	Horizontal17->setSize(sf::Vector2f(1400.f, 1.f));
@@ -189,7 +166,7 @@ void Drawables::drawGrid(float x, float y, sf::RenderWindow * window)
 	Horizontal17->setPosition(x, y - 400);
 	Horizontal17->setFillColor(sf::Color::Black);
 
-	scene->addDrawable(Horizontal17);
+	scene->addToGrid(Horizontal17);
 
 	sf::RectangleShape* Horizontal18 = new sf::RectangleShape();
 	Horizontal18->setSize(sf::Vector2f(1400.f, 1.f));
@@ -197,7 +174,7 @@ void Drawables::drawGrid(float x, float y, sf::RenderWindow * window)
 	Horizontal18->setPosition(x, y - 450);
 	Horizontal18->setFillColor(sf::Color::Black);
 
-	scene->addDrawable(Horizontal18);
+	scene->addToGrid(Horizontal18);
 
 	/* Vertical Lines */
 
@@ -207,7 +184,7 @@ void Drawables::drawGrid(float x, float y, sf::RenderWindow * window)
 	Vertical1->setPosition(x, y);
 	Vertical1->setFillColor(sf::Color::Black);
 
-	scene->addDrawable(Vertical1);
+	scene->addToGrid(Vertical1);
 
 	sf::RectangleShape* Vertical2 = new sf::RectangleShape();
 	Vertical2->setSize(sf::Vector2f(1.f, 900.f));
@@ -215,7 +192,7 @@ void Drawables::drawGrid(float x, float y, sf::RenderWindow * window)
 	Vertical2->setPosition(x + 100, y);
 	Vertical2->setFillColor(sf::Color::Black);
 
-	scene->addDrawable(Vertical2);
+	scene->addToGrid(Vertical2);
 
 	sf::RectangleShape* Vertical3 = new sf::RectangleShape();
 	Vertical3->setSize(sf::Vector2f(1.f, 900.f));
@@ -223,7 +200,7 @@ void Drawables::drawGrid(float x, float y, sf::RenderWindow * window)
 	Vertical3->setPosition(x + 200, y);
 	Vertical3->setFillColor(sf::Color::Black);
 
-	scene->addDrawable(Vertical3);
+	scene->addToGrid(Vertical3);
 
 	sf::RectangleShape* Vertical4 = new sf::RectangleShape();
 	Vertical4->setSize(sf::Vector2f(1.f, 900.f));
@@ -231,7 +208,7 @@ void Drawables::drawGrid(float x, float y, sf::RenderWindow * window)
 	Vertical4->setPosition(x + 300, y);
 	Vertical4->setFillColor(sf::Color::Black);
 
-	scene->addDrawable(Vertical4);
+	scene->addToGrid(Vertical4);
 
 	sf::RectangleShape* Vertical5 = new sf::RectangleShape();
 	Vertical5->setSize(sf::Vector2f(1.f, 900.f));
@@ -239,7 +216,7 @@ void Drawables::drawGrid(float x, float y, sf::RenderWindow * window)
 	Vertical5->setPosition(x + 400, y);
 	Vertical5->setFillColor(sf::Color::Black);
 
-	scene->addDrawable(Vertical5);
+	scene->addToGrid(Vertical5);
 
 	sf::RectangleShape* Vertical6 = new sf::RectangleShape();
 	Vertical6->setSize(sf::Vector2f(1.f, 900.f));
@@ -247,7 +224,7 @@ void Drawables::drawGrid(float x, float y, sf::RenderWindow * window)
 	Vertical6->setPosition(x + 500, y);
 	Vertical6->setFillColor(sf::Color::Black);
 
-	scene->addDrawable(Vertical6);
+	scene->addToGrid(Vertical6);
 
 	sf::RectangleShape* Vertical7 = new sf::RectangleShape();
 	Vertical7->setSize(sf::Vector2f(1.f, 900.f));
@@ -255,7 +232,7 @@ void Drawables::drawGrid(float x, float y, sf::RenderWindow * window)
 	Vertical7->setPosition(x + 600, y);
 	Vertical7->setFillColor(sf::Color::Black);
 
-	scene->addDrawable(Vertical7);
+	scene->addToGrid(Vertical7);
 
 	sf::RectangleShape* Vertical8 = new sf::RectangleShape();
 	Vertical8->setSize(sf::Vector2f(1.f, 900.f));
@@ -263,7 +240,7 @@ void Drawables::drawGrid(float x, float y, sf::RenderWindow * window)
 	Vertical8->setPosition(x + 700, y);
 	Vertical8->setFillColor(sf::Color::Black);
 
-	scene->addDrawable(Vertical8);
+	scene->addToGrid(Vertical8);
 
 	sf::RectangleShape* Vertical9 = new sf::RectangleShape();
 	Vertical9->setSize(sf::Vector2f(1.f, 900.f));
@@ -271,7 +248,7 @@ void Drawables::drawGrid(float x, float y, sf::RenderWindow * window)
 	Vertical9->setPosition(x -100, y);
 	Vertical9->setFillColor(sf::Color::Black);
 
-	scene->addDrawable(Vertical9);
+	scene->addToGrid(Vertical9);
 
 	sf::RectangleShape* Vertical10 = new sf::RectangleShape();
 	Vertical10->setSize(sf::Vector2f(1.f, 900.f));
@@ -279,7 +256,7 @@ void Drawables::drawGrid(float x, float y, sf::RenderWindow * window)
 	Vertical10->setPosition(x - 200, y);
 	Vertical10->setFillColor(sf::Color::Black);
 
-	scene->addDrawable(Vertical10);
+	scene->addToGrid(Vertical10);
 
 	sf::RectangleShape* Vertical11 = new sf::RectangleShape();
 	Vertical11->setSize(sf::Vector2f(1.f, 900.f));
@@ -287,7 +264,7 @@ void Drawables::drawGrid(float x, float y, sf::RenderWindow * window)
 	Vertical11->setPosition(x - 300, y);
 	Vertical11->setFillColor(sf::Color::Black);
 
-	scene->addDrawable(Vertical11);
+	scene->addToGrid(Vertical11);
 
 	sf::RectangleShape* Vertical12 = new sf::RectangleShape();
 	Vertical12->setSize(sf::Vector2f(1.f, 900.f));
@@ -295,7 +272,7 @@ void Drawables::drawGrid(float x, float y, sf::RenderWindow * window)
 	Vertical12->setPosition(x - 400, y);
 	Vertical12->setFillColor(sf::Color::Black);
 
-	scene->addDrawable(Vertical12);
+	scene->addToGrid(Vertical12);
 
 	sf::RectangleShape* Vertical13 = new sf::RectangleShape();
 	Vertical13->setSize(sf::Vector2f(1.f, 900.f));
@@ -303,7 +280,7 @@ void Drawables::drawGrid(float x, float y, sf::RenderWindow * window)
 	Vertical13->setPosition(x - 500, y);
 	Vertical13->setFillColor(sf::Color::Black);
 
-	scene->addDrawable(Vertical13);
+	scene->addToGrid(Vertical13);
 
 	sf::RectangleShape* Vertical14 = new sf::RectangleShape();
 	Vertical14->setSize(sf::Vector2f(1.f, 900.f));
@@ -311,7 +288,7 @@ void Drawables::drawGrid(float x, float y, sf::RenderWindow * window)
 	Vertical14->setPosition(x - 600, y);
 	Vertical14->setFillColor(sf::Color::Black);
 
-	scene->addDrawable(Vertical14);
+	scene->addToGrid(Vertical14);
 
 	sf::RectangleShape* Vertical15 = new sf::RectangleShape();
 	Vertical15->setSize(sf::Vector2f(1.f, 900.f));
@@ -319,7 +296,7 @@ void Drawables::drawGrid(float x, float y, sf::RenderWindow * window)
 	Vertical15->setPosition(x - 700, y);
 	Vertical15->setFillColor(sf::Color::Black);
 
-	scene->addDrawable(Vertical15);
+	scene->addToGrid(Vertical15);
 }
 
 void Drawables::drawGridNumbers(float x, float y, sf::RenderWindow * window)
