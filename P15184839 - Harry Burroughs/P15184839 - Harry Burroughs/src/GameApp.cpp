@@ -85,28 +85,21 @@ void GameApp::Run()
 				usedVariables[2] = static_cast<sf::Uint8>(variables[2] * 1.f);
 				usedVariables[3] = static_cast<sf::Uint8>(variables[3] * 1.f);
 			}
-			if (ImGui::InputInt("Physics Affected: 1 = Yes, 0 = No", physicsOption))
-			{
-				usedPhysicsOption = static_cast<sf::Uint8>(physicsOption[0] * 1.f);
-			}
-
 			if (ImGui::Button("Add Square"))
 			{
-				//ImGui::InputFloat3("Position X, Position Y, Size", location, 1, NULL);
-				input->draw->drawSquare(variables[0], variables[1], variables[2], variables[3], m_window, bgColor, usedPhysicsOption);
-				
+				input->draw->drawSquare(variables[0], variables[1], variables[2], variables[3], m_window, bgColor, 0);				
 			}
 			if (ImGui::Button("Add Rectangle"))
 			{
-				input->draw->drawRectangle(variables[0], variables[1], variables[2], variables[3], m_window, bgColor, usedPhysicsOption);
+				input->draw->drawRectangle(variables[0], variables[1], variables[2], variables[3], m_window, bgColor, 0);
 			}
 			if (ImGui::Button("Add Circle"))
 			{
-				input->draw->drawCircle(variables[0], variables[1], variables[2], variables[3], m_window, bgColor, usedPhysicsOption);
+				input->draw->drawCircle(variables[0], variables[1], variables[2], variables[3], m_window, bgColor, 0);
 			}
 			if (ImGui::Button("Add Triangle"))
 			{
-				input->draw->drawTriangle(variables[0], variables[1], variables[2], variables[3], m_window, bgColor, usedPhysicsOption);
+				input->draw->drawTriangle(variables[0], variables[1], variables[2], variables[3], m_window, bgColor, 0);
 			}
 			if (noOfPlayers < 1)
 			{
