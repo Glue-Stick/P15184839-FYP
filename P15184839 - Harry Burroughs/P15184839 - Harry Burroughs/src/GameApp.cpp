@@ -41,11 +41,7 @@ void GameApp::Run()
 			ImGui::SFML::ProcessEvent(e);
 			if (e.type == sf::Event::Closed)
 				m_window->close();
-			//only detects input if mode is in test level mode
-			if (gameMode == false)
-			{
-				input->InputHandler(e, m_window);
-			}
+			
 		}	
 
 		ImGui::SFML::Update(m_window, deltaClock.restart());
@@ -74,7 +70,7 @@ void GameApp::Run()
 			}
 			ImGui::End();
 
-			ImGui::Begin("Add Shapes");
+			ImGui::Begin("Add Shapes: X, Y, Size, Rotation");
 
 			if (ImGui::InputFloat4("Variable Input", variables))
 			{
@@ -88,6 +84,7 @@ void GameApp::Run()
 			{
 				//ImGui::InputFloat3("Position X, Position Y, Size", location, 1, NULL);
 				input->draw->drawSquare(variables[0], variables[1], variables[2], variables[3], m_window, bgColor);
+				
 			}
 			if (ImGui::Button("Add Rectangle"))
 			{
@@ -173,6 +170,12 @@ void GameApp::Run()
 
 		/*!< Simulate the world. */
 		//World.Step(1 / 60.f, 8, 3);
+
+		//only detects input if mode is in test level mode
+		if (gameMode == false)
+		{
+			input->InputHandler(e, m_window);
+		}
 
 		scene->render(m_window);
 		//present it to that screen

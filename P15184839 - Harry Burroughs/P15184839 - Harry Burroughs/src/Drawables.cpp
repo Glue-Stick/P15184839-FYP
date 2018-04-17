@@ -9,35 +9,12 @@ Drawables::Drawables(Scene* scene)
 
 void Drawables::drawSquare(float x, float y, float size, float rotation, sf::RenderWindow* window, sf::Color color)
 {
-	sf::RectangleShape* Rectangle =  new sf::RectangleShape();
-	Rectangle->setSize(sf::Vector2f(size, size));
-	Rectangle->setOrigin(Rectangle->getSize().x / 2.0f, Rectangle->getSize().y / 2.0f);
-	Rectangle->setPosition(x, y);
-	Rectangle->setRotation(rotation);
-	Rectangle->setFillColor(color);
-	Rectangle->setOutlineColor(sf::Color::Black);
-	Rectangle->setOutlineThickness(1.f);
-
-	//b2BodyDef BodyDef;
-	//BodyDef.position = b2Vec2(x / SCALE, y / SCALE); /*!< Creates the object at the x and y coordinates passed in when the object is called in the draw function */
-	//BodyDef.type = b2_dynamicBody;
-	//b2Body* Body3 = world.CreateBody(&BodyDef);
-	////Body3->SetUserData((void*)4); /*!< Sets the user data, which will be used when reseting the map and drawing the sprite to the object. */
-
-	//b2PolygonShape obstacle;
-	//obstacle.SetAsBox((50.f / 2) / SCALE, (50.f / 2) / SCALE); /*!< Creates a box shape, divided by the desired width and height. */
-	//b2FixtureDef FixtureDef;
-	//FixtureDef.density = 0.f; /*!< Sets the density of the body. */
-	//FixtureDef.shape = &obstacle; /*!< Sets the shape. */
-	//Body3->CreateFixture(&FixtureDef);
-
-	scene->addDrawable(Rectangle);
+	scene->addDrawable(new Objects(sf::Vector2f(x, y), sf::Vector2f(size, size), color));
 }
 
 void Drawables::drawRectangle(float x, float y, float size, float rotation, sf::RenderWindow * window, sf::Color color)
 {
-	sf::RectangleShape* Rectangle = new sf::RectangleShape();
-	Rectangle->setSize(sf::Vector2f(size, size/2));
+	/*Rectangle->setSize(sf::Vector2f(size, size/2));
 	Rectangle->setOrigin(Rectangle->getSize().x / 2.0f, Rectangle->getSize().y / 2.0f);
 	Rectangle->setPosition(x, y);
 	Rectangle->setRotation(rotation);
@@ -45,13 +22,11 @@ void Drawables::drawRectangle(float x, float y, float size, float rotation, sf::
 	Rectangle->setOutlineColor(sf::Color::Black);
 	Rectangle->setOutlineThickness(1.f);
 
-	scene->addDrawable(Rectangle);
+	scene->addDrawable(Rectangle);*/
 }
 
 void Drawables::drawCircle(float x, float y, float size, float rotation, sf::RenderWindow * window, sf::Color color)
 {
-	
-
 	sf::CircleShape* Circle = new sf::CircleShape();
 	Circle->setRadius(size);
 	Circle->setOrigin(Circle->getRadius(), Circle->getRadius());
@@ -66,16 +41,15 @@ void Drawables::drawCircle(float x, float y, float size, float rotation, sf::Ren
 
 void Drawables::drawPlayer(float x, float y, float size, float rotation, sf::RenderWindow * window, sf::Color color)
 {
-	sf::RectangleShape* Player = new sf::RectangleShape();
-	Player->setSize(sf::Vector2f(size, size));
-	Player->setOrigin(Player->getSize().x / 2.0f, Player->getSize().y / 2.0f);
-	Player->setPosition(x, y);
-	Player->setRotation(rotation);
-	Player->setFillColor(color);
-	Player->setOutlineColor(color);
-	Player->setOutlineThickness(1.f);
+	/*Rectangle->setSize(sf::Vector2f(size, size));
+	Rectangle->setOrigin(Rectangle->getSize().x / 2.0f, Rectangle->getSize().y / 2.0f);
+	Rectangle->setPosition(x, y);
+	Rectangle->setRotation(rotation);
+	Rectangle->setFillColor(color);
+	Rectangle->setOutlineColor(color);
+	Rectangle->setOutlineThickness(1.f);
 
-	scene->addDrawable(Player);
+	scene->addDrawable(Rectangle);*/
 }
 
 void Drawables::drawGrid(float x, float y, sf::RenderWindow * window)

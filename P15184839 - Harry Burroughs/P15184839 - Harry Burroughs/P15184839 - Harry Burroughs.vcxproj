@@ -19,9 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Collision.h" />
     <ClInclude Include="include\Drawables.h" />
     <ClInclude Include="include\GameApp.h" />
     <ClInclude Include="include\Input.h" />
+    <ClInclude Include="include\Objects.h" />
     <ClInclude Include="include\Scene.h" />
     <ClInclude Include="Physics.h" />
   </ItemGroup>
@@ -30,10 +32,12 @@
     <ClCompile Include="..\..\IMGUI\imgui-master\imgui.cpp" />
     <ClCompile Include="..\..\IMGUI\imgui-master\imgui_demo.cpp" />
     <ClCompile Include="..\..\IMGUI\imgui-master\imgui_draw.cpp" />
+    <ClCompile Include="src\Collision.cpp" />
     <ClCompile Include="src\Drawables.cpp" />
     <ClCompile Include="src\GameApp.cpp" />
     <ClCompile Include="src\Input.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Objects.cpp" />
     <ClCompile Include="src\Scene.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
