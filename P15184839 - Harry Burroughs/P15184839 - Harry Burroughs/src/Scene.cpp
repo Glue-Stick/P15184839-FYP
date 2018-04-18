@@ -86,9 +86,14 @@ void Scene::save1()
 		output_file << shapesToBeDrawn[i]->GetSize().x << "\n";
 		output_file << shapesToBeDrawn[i]->GetSize().y << "\n";
 		output_file << shapesToBeDrawn[i]->getRotation() << "\n";
-		output_file << shapesToBeDrawn[i]->getColour().r << "\n";
-		output_file << shapesToBeDrawn[i]->getColour().g << "\n";
-		output_file << shapesToBeDrawn[i]->getColour().b << "\n";
+
+		int r = shapesToBeDrawn[i]->getColour().r;
+		int g = shapesToBeDrawn[i]->getColour().g;
+		int b = shapesToBeDrawn[i]->getColour().b;
+
+		//output_file << shapesToBeDrawn[i]->getColour().r << "\n";
+		//output_file << shapesToBeDrawn[i]->getColour().g << "\n";
+		//output_file << shapesToBeDrawn[i]->getColour().b << "\n";
 	}
 
 	Level1 = shapesToBeDrawn;
