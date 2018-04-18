@@ -39,10 +39,6 @@ void Scene::render(sf::RenderWindow* window)
 	{
 		window->draw(*gridToBeDrawn[i]);
 	}	
-	/*if (player != nullptr)
-	{
-		window->draw(*player->getDrawable());
-	}	*/
 }
 
 void Scene::update(sf::RenderWindow * window, float power, float speed)
@@ -157,11 +153,12 @@ void Scene::load1()
 	input_file.open("./Levels/Level1.txt");
 
 	//check for error
-	if (input_file.fail)
+	if (input_file.fail())
 	{
 		std::cerr << "Error: Opening Save Level 1" << std::endl;
 	}
 
+	std::string check;
 	int type;
 	float posX;
 	float posY;
@@ -174,7 +171,7 @@ void Scene::load1()
 	
 	std::string item;
 
-	while (!input_file.eof)
+	while (!input_file.eof())
 	{
 		input_file >> type >> posX >> posY >> sizeX >> sizeY >> rot >> r >> g >> b;
 
@@ -187,15 +184,15 @@ void Scene::load1()
 			addDrawable(new Player(sf::Vector2f(posX, posY), sf::Vector2f(sizeX, sizeY), rot, sf::Color(r, g, b)));
 		}
 	}
-	//shapesToBeDrawn = Level1;
+	
 }
 
 void Scene::load2()
 {
-	//shapesToBeDrawn = Level2;
+	
 }
 
 void Scene::load3()
 {
-	//shapesToBeDrawn = Level3;
+	
 }

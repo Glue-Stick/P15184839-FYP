@@ -15,10 +15,10 @@ public:
 	Scene* scene;
 	Drawables(Scene* scene);
 
-	void drawSquare(float x, float y, float size, float rotation, sf::RenderWindow* window, sf::Color color, bool physics);
-	void drawRectangle(float x, float y, float size, float rotation, sf::RenderWindow* window, sf::Color color, bool physics);
-	void drawCircle(float x, float y, float size, float rotation, sf::RenderWindow* window, sf::Color color, bool physics);
-	void drawTriangle(float x, float y, float size, float rotation, sf::RenderWindow* window, sf::Color color, bool physics);
+	void drawSquare(float x, float y, float size, float rotation, sf::RenderWindow* window, sf::Color color);
+	void drawRectangle(float x, float y, float size, float rotation, sf::RenderWindow* window, sf::Color color);
+	void drawCircle(float x, float y, float size, float rotation, sf::RenderWindow* window, sf::Color color);
+	void drawTriangle(float x, float y, float size, float rotation, sf::RenderWindow* window, sf::Color color);
 
 	void drawGrid(float x, float y, sf::RenderWindow* window);
 	void drawGridNumbers(float x, float y, sf::RenderWindow* window);
