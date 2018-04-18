@@ -5,6 +5,8 @@
 #include <Collision.h>
 #include <Objects.h>
 #include <Player.h>
+#include <fstream>
+#include <iterator>
 
 class Scene
 {

@@ -12,6 +12,9 @@ public:
 	bool checkCollision(Collision& other, float push);
 	sf::Vector2f GetPosition() { return m_position; }
 	sf::Vector2f GetHalfSize() { return m_size / 2.0f; }
+	sf::Vector2f GetSize() { return m_size; }
+	float getRotation() { return m_rotation; }
+	sf::Color getColour() { return m_colour; }
 	
 	void applyForce(sf::Vector2f direction, float power);
 
@@ -31,6 +34,8 @@ private:
 protected:
 	sf::Vector2f m_position;
 	sf::Vector2f m_size;
+	float m_rotation;
+	sf::Color m_colour;
 
 	virtual void Update(float power);
 	

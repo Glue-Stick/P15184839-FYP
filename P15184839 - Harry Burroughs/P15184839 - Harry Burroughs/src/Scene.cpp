@@ -76,24 +76,70 @@ void Scene::clear()
 
 void Scene::save1()
 {
+	std::ofstream output_file("./Levels/Level1.txt");
+	for (int i = 0; i < shapesToBeDrawn.size(); i++)
+	{
+		output_file << "Object";
+		output_file << shapesToBeDrawn[i]->type << "\n";
+		output_file << shapesToBeDrawn[i]->GetPosition().x << "\n";
+		output_file << shapesToBeDrawn[i]->GetPosition().y << "\n";
+		output_file << shapesToBeDrawn[i]->GetSize().x << "\n";
+		output_file << shapesToBeDrawn[i]->GetSize().y << "\n";
+		output_file << shapesToBeDrawn[i]->getRotation() << "\n";
+		output_file << shapesToBeDrawn[i]->getColour().r << "\n";
+		output_file << shapesToBeDrawn[i]->getColour().g << "\n";
+		output_file << shapesToBeDrawn[i]->getColour().b << "\n";
+	}
+
 	Level1 = shapesToBeDrawn;
 	clear();
 }
 
 void Scene::save2()
 {
+	std::ofstream output_file("./Levels/Level2.txt");
+	for (int i = 0; i < shapesToBeDrawn.size(); i++)
+	{
+		output_file << "Object";
+		output_file << shapesToBeDrawn[i]->type << "\n";
+		output_file << shapesToBeDrawn[i]->GetPosition().x << "\n";
+		output_file << shapesToBeDrawn[i]->GetPosition().y << "\n";
+		output_file << shapesToBeDrawn[i]->GetSize().x << "\n";
+		output_file << shapesToBeDrawn[i]->GetSize().y << "\n";
+		output_file << shapesToBeDrawn[i]->getRotation() << "\n";
+		output_file << shapesToBeDrawn[i]->getColour().r << "\n";
+		output_file << shapesToBeDrawn[i]->getColour().g << "\n";
+		output_file << shapesToBeDrawn[i]->getColour().b << "\n";
+	}
 	Level2 = shapesToBeDrawn;
 	clear();
 }
 
 void Scene::save3()
 {
+	std::ofstream output_file("./Levels/Level3.txt");
+	for (int i = 0; i < shapesToBeDrawn.size(); i++)
+	{
+		output_file << "Object";
+		output_file << shapesToBeDrawn[i]->type << "\n";
+		output_file << shapesToBeDrawn[i]->GetPosition().x << "\n";
+		output_file << shapesToBeDrawn[i]->GetPosition().y << "\n";
+		output_file << shapesToBeDrawn[i]->GetSize().x << "\n";
+		output_file << shapesToBeDrawn[i]->GetSize().y << "\n";
+		output_file << shapesToBeDrawn[i]->getRotation() << "\n";
+		output_file << shapesToBeDrawn[i]->getColour().r << "\n";
+		output_file << shapesToBeDrawn[i]->getColour().g << "\n";
+		output_file << shapesToBeDrawn[i]->getColour().b << "\n";
+	}
 	Level3 = shapesToBeDrawn;
 	clear();
 }
 
 void Scene::load1()
 {
+	//read from file
+
+
 	shapesToBeDrawn = Level1;
 }
 

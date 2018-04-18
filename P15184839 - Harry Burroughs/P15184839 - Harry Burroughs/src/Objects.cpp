@@ -4,6 +4,9 @@ Objects::Objects(sf::Vector2f position, sf::Vector2f size, float rotation, sf::C
 {
 	m_position = position;
 	m_size = size;
+	m_rotation = rotation;
+	m_colour = colour;
+
 	update = updateVisual;
 
 	type = 1;
@@ -22,6 +25,8 @@ Objects::Objects(sf::Vector2f position, float radius, sf::Color colour, bool upd
 {
 	m_position = position;
 	m_size = sf::Vector2f(radius, radius);
+	m_colour = colour;
+
 	update = updateVisual;
 
 	type = 1;
@@ -39,6 +44,8 @@ Objects::Objects(sf::Vector2f position, float radius, float rotation, float numb
 {
 	m_position = position;
 	m_size = sf::Vector2f(radius, radius);
+	m_rotation = rotation;
+	m_colour = colour;
 	update = updateVisual;
 
 	type = 1;
