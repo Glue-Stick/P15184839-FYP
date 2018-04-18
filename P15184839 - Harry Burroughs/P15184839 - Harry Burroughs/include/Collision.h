@@ -7,7 +7,7 @@ public:
 	Collision(bool applyGravity, bool staticObject);
 	~Collision();
 
-	void Move(float dx, float dy) { applyForce(sf::Vector2f(dx, dy), 1); }
+	void Move(float dx, float dy) { applyForce(sf::Vector2f(dx, dy), 10); }
 
 	bool checkCollision(Collision& other, float push);
 	sf::Vector2f GetPosition() { return m_position; }
@@ -17,6 +17,7 @@ public:
 
 	bool m_Gravity;
 	bool m_staticCollider;
+	bool isGrounded = false;
 
 	void isStatic(bool wontMove);
 

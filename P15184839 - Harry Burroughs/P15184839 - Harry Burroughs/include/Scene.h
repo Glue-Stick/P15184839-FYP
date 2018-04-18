@@ -19,6 +19,7 @@ public:
 	void update(sf::RenderWindow* window, float power, float speed);
 
 	void addPlayer(float x, float y, float size, float rotation, sf::RenderWindow * window, sf::Color color);
+	int noOfPlayers = 0;
 
 	void clear();
 	void save1();

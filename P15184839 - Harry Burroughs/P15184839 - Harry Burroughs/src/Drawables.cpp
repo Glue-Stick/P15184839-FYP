@@ -9,12 +9,12 @@ Drawables::Drawables(Scene* scene)
 
 void Drawables::drawSquare(float x, float y, float size, float rotation, sf::RenderWindow* window, sf::Color color, bool physics)
 {
-	scene->addDrawable(new Objects(sf::Vector2f(x, y), sf::Vector2f(size, size), color, physics));
+	scene->addDrawable(new Objects(sf::Vector2f(x, y), sf::Vector2f(size, size), rotation, color, physics));
 }
 
 void Drawables::drawRectangle(float x, float y, float size, float rotation, sf::RenderWindow * window, sf::Color color, bool physics)
 {
-	scene->addDrawable(new Objects(sf::Vector2f(x, y), sf::Vector2f(size, (size / 2)), color, physics));
+	scene->addDrawable(new Objects(sf::Vector2f(x, y), sf::Vector2f(size, (size / 2)), rotation,  color, physics));
 }
 
 void Drawables::drawCircle(float x, float y, float size, float rotation, sf::RenderWindow * window, sf::Color color, bool physics)
@@ -24,7 +24,7 @@ void Drawables::drawCircle(float x, float y, float size, float rotation, sf::Ren
 
 void Drawables::drawTriangle(float x, float y, float size, float rotation, sf::RenderWindow * window, sf::Color color, bool physics)
 {
-	scene->addDrawable(new Objects(sf::Vector2f(x, y), size, 3, color, physics));
+	scene->addDrawable(new Objects(sf::Vector2f(x, y), size, rotation, 3, color, physics));
 }
 
 

@@ -101,7 +101,7 @@ void GameApp::Run()
 			{
 				input->draw->drawTriangle(variables[0], variables[1], variables[2], variables[3], m_window, bgColor, 0);
 			}
-			if (noOfPlayers < 1)
+			if (scene->noOfPlayers < 1)
 			{
 				if (ImGui::Button("Add Player Square"))
 				{

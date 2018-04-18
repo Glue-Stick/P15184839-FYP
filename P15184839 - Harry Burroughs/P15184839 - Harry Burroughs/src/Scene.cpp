@@ -17,6 +17,10 @@ void Scene::addToGrid(sf::Drawable * grid)
 
 void Scene::Undo()
 {
+	if (shapesToBeDrawn[shapesToBeDrawn.size() - 1]->type == 2)
+	{
+		noOfPlayers = 0;
+	}
 	shapesToBeDrawn.pop_back();
 }
 
@@ -35,10 +39,10 @@ void Scene::render(sf::RenderWindow* window)
 	{
 		window->draw(*gridToBeDrawn[i]);
 	}	
-	if (player != nullptr)
+	/*if (player != nullptr)
 	{
 		window->draw(*player->getDrawable());
-	}	
+	}	*/
 }
 
 void Scene::update(sf::RenderWindow * window, float power, float speed)
@@ -52,7 +56,6 @@ void Scene::update(sf::RenderWindow * window, float power, float speed)
 		player->Update(power, speed);
 		for (int j = 0; j < shapesToBeDrawn.size(); j++)
 		{
-			shapesToBeDrawn[j]->checkCollision(*player, 0);
 			player->checkCollision(*shapesToBeDrawn[j], 0);
 		}
 	}	
@@ -60,13 +63,15 @@ void Scene::update(sf::RenderWindow * window, float power, float speed)
 
 void Scene::addPlayer(float x, float y, float size, float rotation, sf::RenderWindow * window, sf::Color color)
 {
-	player = new Player(sf::Vector2f(x, y), sf::Vector2f(size, size), color);
+	player = new Player(sf::Vector2f(x, y), sf::Vector2f(size, size), rotation, color);
+	shapesToBeDrawn.push_back(player);
+	noOfPlayers = 1;
 }
 
 void Scene::clear()
 {
 	shapesToBeDrawn.clear();
-	player = nullptr;
+	noOfPlayers = 0;
 }
 
 void Scene::save1()
