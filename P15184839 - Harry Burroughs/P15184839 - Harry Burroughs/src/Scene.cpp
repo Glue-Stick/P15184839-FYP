@@ -145,6 +145,7 @@ void Scene::load1()
 	std::ifstream input_file;
 	input_file.open("./Levels/Level1.txt");
 
+
 	//check for error
 	if (input_file.fail())
 	{
@@ -163,33 +164,43 @@ void Scene::load1()
 	int b;
 	
 	std::string item;
-	while (!input_file.eof())
-	{
-		input_file >> check;
-		if (check == "Object")
-		{
-			input_file >> type >> posX >> posY >> sizeX >> sizeY >> rot >> r >> g >> b;
-		}
 
-		if (type == 1)
+	if (input_file.peek() == std::ifstream::traits_type::eof())
+	{
+
+	}
+	else
+	{
+		while (!input_file.eof())
 		{
-			addDrawable(new Objects(sf::Vector2f(posX, posY), sf::Vector2f(sizeX, sizeY), rot, sf::Color(r, g, b), 0));
-		}
-		if (type == 2)
-		{
-			addDrawable(new Objects(sf::Vector2f(posX, posY), sizeX, sf::Color(r, g, b), 0));
-		}
-		if (type == 3)
-		{
-			addDrawable(new Objects(sf::Vector2f(posX, posY), sizeX, rot, 3, sf::Color(r, g, b), 0));
-		}
-		if (type == 4)
-		{
-			player = new Player (sf::Vector2f(posX, posY), sf::Vector2f(sizeX, sizeY), rot, sf::Color(r, g, b));
-			shapesToBeDrawn.push_back(player);
-			noOfPlayers = 1;
+			input_file >> check;
+			if (check == "Object")
+			{
+				input_file >> type >> posX >> posY >> sizeX >> sizeY >> rot >> r >> g >> b;
+			}
+
+			if (type == 1)
+			{
+				addDrawable(new Objects(sf::Vector2f(posX, posY), sf::Vector2f(sizeX, sizeY), rot, sf::Color(r, g, b), 0));
+			}
+			if (type == 2)
+			{
+				addDrawable(new Objects(sf::Vector2f(posX, posY), sizeX, sf::Color(r, g, b), 0));
+			}
+			if (type == 3)
+			{
+				addDrawable(new Objects(sf::Vector2f(posX, posY), sizeX, rot, 3, sf::Color(r, g, b), 0));
+			}
+			if (type == 4)
+			{
+				player = new Player(sf::Vector2f(posX, posY), sf::Vector2f(sizeX, sizeY), rot, sf::Color(r, g, b));
+				shapesToBeDrawn.push_back(player);
+				noOfPlayers = 1;
+			}
 		}
 	}
+
+	
 	
 }
 
@@ -217,31 +228,38 @@ void Scene::load2()
 	int b;
 
 	std::string item;
-	while (!input_file.eof())
+	if (input_file.peek() == std::ifstream::traits_type::eof())
 	{
-		input_file >> check;
-		if (check == "Object")
-		{
-			input_file >> type >> posX >> posY >> sizeX >> sizeY >> rot >> r >> g >> b;
-		}
 
-		if (type == 1)
+	}
+	else
+	{
+		while (!input_file.eof())
 		{
-			addDrawable(new Objects(sf::Vector2f(posX, posY), sf::Vector2f(sizeX, sizeY), rot, sf::Color(r, g, b), 0));
-		}
-		if (type == 2)
-		{
-			addDrawable(new Objects(sf::Vector2f(posX, posY), sizeX, sf::Color(r, g, b), 0));
-		}
-		if (type == 3)
-		{
-			addDrawable(new Objects(sf::Vector2f(posX, posY), sizeX, rot, 3, sf::Color(r, g, b), 0));
-		}
-		if (type == 4)
-		{
-			player = new Player(sf::Vector2f(posX, posY), sf::Vector2f(sizeX, sizeY), rot, sf::Color(r, g, b));
-			shapesToBeDrawn.push_back(player);
-			noOfPlayers = 1;
+			input_file >> check;
+			if (check == "Object")
+			{
+				input_file >> type >> posX >> posY >> sizeX >> sizeY >> rot >> r >> g >> b;
+			}
+
+			if (type == 1)
+			{
+				addDrawable(new Objects(sf::Vector2f(posX, posY), sf::Vector2f(sizeX, sizeY), rot, sf::Color(r, g, b), 0));
+			}
+			if (type == 2)
+			{
+				addDrawable(new Objects(sf::Vector2f(posX, posY), sizeX, sf::Color(r, g, b), 0));
+			}
+			if (type == 3)
+			{
+				addDrawable(new Objects(sf::Vector2f(posX, posY), sizeX, rot, 3, sf::Color(r, g, b), 0));
+			}
+			if (type == 4)
+			{
+				player = new Player(sf::Vector2f(posX, posY), sf::Vector2f(sizeX, sizeY), rot, sf::Color(r, g, b));
+				shapesToBeDrawn.push_back(player);
+				noOfPlayers = 1;
+			}
 		}
 	}
 }
@@ -270,31 +288,38 @@ void Scene::load3()
 	int b;
 
 	std::string item;
-	while (!input_file.eof())
+	if (input_file.peek() == std::ifstream::traits_type::eof())
 	{
-		input_file >> check;
-		if (check == "Object")
-		{
-			input_file >> type >> posX >> posY >> sizeX >> sizeY >> rot >> r >> g >> b;
-		}
 
-		if (type == 1)
+	}
+	else
+	{
+		while (!input_file.eof())
 		{
-			addDrawable(new Objects(sf::Vector2f(posX, posY), sf::Vector2f(sizeX, sizeY), rot, sf::Color(r, g, b), 0));
-		}
-		if (type == 2)
-		{
-			addDrawable(new Objects(sf::Vector2f(posX, posY), sizeX, sf::Color(r, g, b), 0));
-		}
-		if (type == 3)
-		{
-			addDrawable(new Objects(sf::Vector2f(posX, posY), sizeX, rot, 3, sf::Color(r, g, b), 0));
-		}
-		if (type == 4)
-		{
-			player = new Player(sf::Vector2f(posX, posY), sf::Vector2f(sizeX, sizeY), rot, sf::Color(r, g, b));
-			shapesToBeDrawn.push_back(player);
-			noOfPlayers = 1;
+			input_file >> check;
+			if (check == "Object")
+			{
+				input_file >> type >> posX >> posY >> sizeX >> sizeY >> rot >> r >> g >> b;
+			}
+
+			if (type == 1)
+			{
+				addDrawable(new Objects(sf::Vector2f(posX, posY), sf::Vector2f(sizeX, sizeY), rot, sf::Color(r, g, b), 0));
+			}
+			if (type == 2)
+			{
+				addDrawable(new Objects(sf::Vector2f(posX, posY), sizeX, sf::Color(r, g, b), 0));
+			}
+			if (type == 3)
+			{
+				addDrawable(new Objects(sf::Vector2f(posX, posY), sizeX, rot, 3, sf::Color(r, g, b), 0));
+			}
+			if (type == 4)
+			{
+				player = new Player(sf::Vector2f(posX, posY), sf::Vector2f(sizeX, sizeY), rot, sf::Color(r, g, b));
+				shapesToBeDrawn.push_back(player);
+				noOfPlayers = 1;
+			}
 		}
 	}
 }
