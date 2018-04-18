@@ -7,6 +7,7 @@
 #include <Player.h>
 #include <fstream>
 #include <iterator>
+#include <iostream>
 
 class Scene
 {

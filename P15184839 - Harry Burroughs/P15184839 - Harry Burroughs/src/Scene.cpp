@@ -87,9 +87,9 @@ void Scene::save1()
 		output_file << shapesToBeDrawn[i]->GetSize().y << "\n";
 		output_file << shapesToBeDrawn[i]->getRotation() << "\n";
 
-		sf::Uint8 r = shapesToBeDrawn[i]->getColour().r;
-		sf::Uint8 g = shapesToBeDrawn[i]->getColour().g;
-		sf::Uint8 b = shapesToBeDrawn[i]->getColour().b;
+		int r = shapesToBeDrawn[i]->getColour().r;
+		int g = shapesToBeDrawn[i]->getColour().g;
+		int b = shapesToBeDrawn[i]->getColour().b;
 
 		output_file << r << "\n";
 		output_file << g << "\n";
@@ -97,7 +97,7 @@ void Scene::save1()
 	}
 
 	Level1 = shapesToBeDrawn;
-	clear();
+	
 }
 
 void Scene::save2()
@@ -112,12 +112,17 @@ void Scene::save2()
 		output_file << shapesToBeDrawn[i]->GetSize().x << "\n";
 		output_file << shapesToBeDrawn[i]->GetSize().y << "\n";
 		output_file << shapesToBeDrawn[i]->getRotation() << "\n";
-		output_file << shapesToBeDrawn[i]->getColour().r << "\n";
-		output_file << shapesToBeDrawn[i]->getColour().g << "\n";
-		output_file << shapesToBeDrawn[i]->getColour().b << "\n";
+		
+		int r = shapesToBeDrawn[i]->getColour().r;
+		int g = shapesToBeDrawn[i]->getColour().g;
+		int b = shapesToBeDrawn[i]->getColour().b;
+
+		output_file << r << "\n";
+		output_file << g << "\n";
+		output_file << b << "\n";
 	}
 	Level2 = shapesToBeDrawn;
-	clear();
+	
 }
 
 void Scene::save3()
@@ -132,28 +137,65 @@ void Scene::save3()
 		output_file << shapesToBeDrawn[i]->GetSize().x << "\n";
 		output_file << shapesToBeDrawn[i]->GetSize().y << "\n";
 		output_file << shapesToBeDrawn[i]->getRotation() << "\n";
-		output_file << shapesToBeDrawn[i]->getColour().r << "\n";
-		output_file << shapesToBeDrawn[i]->getColour().g << "\n";
-		output_file << shapesToBeDrawn[i]->getColour().b << "\n";
+		
+		int r = shapesToBeDrawn[i]->getColour().r;
+		int g = shapesToBeDrawn[i]->getColour().g;
+		int b = shapesToBeDrawn[i]->getColour().b;
+
+		output_file << r << "\n";
+		output_file << g << "\n";
+		output_file << b << "\n";
 	}
 	Level3 = shapesToBeDrawn;
-	clear();
+	
 }
 
 void Scene::load1()
 {
 	//read from file
+	std::ifstream input_file;
+	input_file.open("./Levels/Level1.txt");
 
+	//check for error
+	if (input_file.fail)
+	{
+		std::cerr << "Error: Opening Save Level 1" << std::endl;
+	}
 
-	shapesToBeDrawn = Level1;
+	int type;
+	float posX;
+	float posY;
+	float sizeX;
+	float sizeY;
+	float rot;
+	int r;
+	int g; 
+	int b;
+	
+	std::string item;
+
+	while (!input_file.eof)
+	{
+		input_file >> type >> posX >> posY >> sizeX >> sizeY >> rot >> r >> g >> b;
+
+		if (type == 1)
+		{
+			addDrawable(new Objects(sf::Vector2f(posX, posY), sf::Vector2f(sizeX, sizeY), rot, sf::Color(r, g, b), 0));
+		}
+		if (type == 2)
+		{
+			addDrawable(new Player(sf::Vector2f(posX, posY), sf::Vector2f(sizeX, sizeY), rot, sf::Color(r, g, b)));
+		}
+	}
+	//shapesToBeDrawn = Level1;
 }
 
 void Scene::load2()
 {
-	shapesToBeDrawn = Level2;
+	//shapesToBeDrawn = Level2;
 }
 
 void Scene::load3()
 {
-	shapesToBeDrawn = Level3;
+	//shapesToBeDrawn = Level3;
 }

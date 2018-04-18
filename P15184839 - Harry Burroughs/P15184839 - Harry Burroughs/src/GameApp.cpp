@@ -87,19 +87,19 @@ void GameApp::Run()
 			}
 			if (ImGui::Button("Add Square"))
 			{
-				input->draw->drawSquare(variables[0], variables[1], variables[2], variables[3], m_window, bgColor, 0);				
+				input->draw->drawSquare(variables[0], variables[1], variables[2], variables[3], m_window, bgColor);				
 			}
 			if (ImGui::Button("Add Rectangle"))
 			{
-				input->draw->drawRectangle(variables[0], variables[1], variables[2], variables[3], m_window, bgColor, 0);
+				input->draw->drawRectangle(variables[0], variables[1], variables[2], variables[3], m_window, bgColor);
 			}
 			if (ImGui::Button("Add Circle"))
 			{
-				input->draw->drawCircle(variables[0], variables[1], variables[2], variables[3], m_window, bgColor, 0);
+				input->draw->drawCircle(variables[0], variables[1], variables[2], variables[3], m_window, bgColor);
 			}
 			if (ImGui::Button("Add Triangle"))
 			{
-				input->draw->drawTriangle(variables[0], variables[1], variables[2], variables[3], m_window, bgColor, 0);
+				input->draw->drawTriangle(variables[0], variables[1], variables[2], variables[3], m_window, bgColor);
 			}
 			if (scene->noOfPlayers < 1)
 			{
