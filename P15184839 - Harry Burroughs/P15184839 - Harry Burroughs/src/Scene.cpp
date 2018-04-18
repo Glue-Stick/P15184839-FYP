@@ -47,7 +47,7 @@ void Scene::update(sf::RenderWindow * window, float power, float speed)
 	{
 		shapesToBeDrawn[i]->Update(power);
 	}
-	if (player != nullptr)
+	if (noOfPlayers == 1)
 	{
 		player->Update(power, speed);
 		for (int j = 0; j < shapesToBeDrawn.size(); j++)

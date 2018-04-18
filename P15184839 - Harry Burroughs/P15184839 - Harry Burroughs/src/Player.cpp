@@ -1,6 +1,6 @@
 #include <Player.h>
 
-Player::Player(sf::Vector2f position, sf::Vector2f size, float rotation, sf::Color colour) : Objects(position, size, rotation, colour, false)
+Player::Player(sf::Vector2f position, sf::Vector2f size, float rotation, sf::Color colour) : Objects(position, size, rotation, colour, true)
 {
 	isStatic(false);
 	type = 4;
