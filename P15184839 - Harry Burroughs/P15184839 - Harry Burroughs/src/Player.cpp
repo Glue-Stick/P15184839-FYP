@@ -3,7 +3,7 @@
 Player::Player(sf::Vector2f position, sf::Vector2f size, float rotation, sf::Color colour) : Objects(position, size, rotation, colour, false)
 {
 	isStatic(false);
-	type = 2;
+	type = 4;
 }
 
 void Player::Update(float power, float speed)

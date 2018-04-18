@@ -33,6 +33,10 @@ public:
 	void load2();
 	void load3();
 
+	bool canLoadLevel1 = false;
+	bool canLoadLevel2 = false;
+	bool canLoadLevel3 = false;
+
 	std::vector<Objects*> shapesToBeDrawn;
 	std::vector<sf::Drawable*> gridToBeDrawn;
 	std::vector<Objects*> Level1;

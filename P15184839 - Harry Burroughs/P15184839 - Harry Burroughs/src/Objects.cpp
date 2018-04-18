@@ -29,7 +29,7 @@ Objects::Objects(sf::Vector2f position, float radius, sf::Color colour, bool upd
 
 	update = updateVisual;
 
-	type = 1;
+	type = 2;
 
 	drawable = new sf::CircleShape(radius);
 	drawable->setOrigin(radius, radius);
@@ -48,7 +48,7 @@ Objects::Objects(sf::Vector2f position, float radius, float rotation, float numb
 	m_colour = colour;
 	update = updateVisual;
 
-	type = 1;
+	type = 3;
 
 	drawable = new sf::CircleShape(radius, numberOfPoints);
 	drawable->setOrigin(radius, radius);

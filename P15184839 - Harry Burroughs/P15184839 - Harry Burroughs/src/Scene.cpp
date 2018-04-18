@@ -75,7 +75,7 @@ void Scene::save1()
 	std::ofstream output_file("./Levels/Level1.txt");
 	for (int i = 0; i < shapesToBeDrawn.size(); i++)
 	{
-		output_file << "Object";
+		output_file << "Object" << "\n";
 		output_file << shapesToBeDrawn[i]->type << "\n";
 		output_file << shapesToBeDrawn[i]->GetPosition().x << "\n";
 		output_file << shapesToBeDrawn[i]->GetPosition().y << "\n";
@@ -90,10 +90,7 @@ void Scene::save1()
 		output_file << r << "\n";
 		output_file << g << "\n";
 		output_file << b << "\n";
-	}
-
-	Level1 = shapesToBeDrawn;
-	
+	}	
 }
 
 void Scene::save2()
@@ -101,7 +98,7 @@ void Scene::save2()
 	std::ofstream output_file("./Levels/Level2.txt");
 	for (int i = 0; i < shapesToBeDrawn.size(); i++)
 	{
-		output_file << "Object";
+		output_file << "Object" << "\n";
 		output_file << shapesToBeDrawn[i]->type << "\n";
 		output_file << shapesToBeDrawn[i]->GetPosition().x << "\n";
 		output_file << shapesToBeDrawn[i]->GetPosition().y << "\n";
@@ -116,9 +113,7 @@ void Scene::save2()
 		output_file << r << "\n";
 		output_file << g << "\n";
 		output_file << b << "\n";
-	}
-	Level2 = shapesToBeDrawn;
-	
+	}	
 }
 
 void Scene::save3()
@@ -126,14 +121,14 @@ void Scene::save3()
 	std::ofstream output_file("./Levels/Level3.txt");
 	for (int i = 0; i < shapesToBeDrawn.size(); i++)
 	{
-		output_file << "Object";
+		output_file << "Object" << "\n";
 		output_file << shapesToBeDrawn[i]->type << "\n";
 		output_file << shapesToBeDrawn[i]->GetPosition().x << "\n";
 		output_file << shapesToBeDrawn[i]->GetPosition().y << "\n";
 		output_file << shapesToBeDrawn[i]->GetSize().x << "\n";
 		output_file << shapesToBeDrawn[i]->GetSize().y << "\n";
 		output_file << shapesToBeDrawn[i]->getRotation() << "\n";
-		
+
 		int r = shapesToBeDrawn[i]->getColour().r;
 		int g = shapesToBeDrawn[i]->getColour().g;
 		int b = shapesToBeDrawn[i]->getColour().b;
@@ -141,9 +136,7 @@ void Scene::save3()
 		output_file << r << "\n";
 		output_file << g << "\n";
 		output_file << b << "\n";
-	}
-	Level3 = shapesToBeDrawn;
-	
+	}	
 }
 
 void Scene::load1()
@@ -170,10 +163,13 @@ void Scene::load1()
 	int b;
 	
 	std::string item;
-
 	while (!input_file.eof())
 	{
-		input_file >> type >> posX >> posY >> sizeX >> sizeY >> rot >> r >> g >> b;
+		input_file >> check;
+		if (check == "Object")
+		{
+			input_file >> type >> posX >> posY >> sizeX >> sizeY >> rot >> r >> g >> b;
+		}
 
 		if (type == 1)
 		{
@@ -181,7 +177,17 @@ void Scene::load1()
 		}
 		if (type == 2)
 		{
-			addDrawable(new Player(sf::Vector2f(posX, posY), sf::Vector2f(sizeX, sizeY), rot, sf::Color(r, g, b)));
+			addDrawable(new Objects(sf::Vector2f(posX, posY), sizeX, sf::Color(r, g, b), 0));
+		}
+		if (type == 3)
+		{
+			addDrawable(new Objects(sf::Vector2f(posX, posY), sizeX, rot, 3, sf::Color(r, g, b), 0));
+		}
+		if (type == 4)
+		{
+			player = new Player (sf::Vector2f(posX, posY), sf::Vector2f(sizeX, sizeY), rot, sf::Color(r, g, b));
+			shapesToBeDrawn.push_back(player);
+			noOfPlayers = 1;
 		}
 	}
 	
@@ -189,10 +195,106 @@ void Scene::load1()
 
 void Scene::load2()
 {
-	
+	//read from file
+	std::ifstream input_file;
+	input_file.open("./Levels/Level2.txt");
+
+	//check for error
+	if (input_file.fail())
+	{
+		std::cerr << "Error: Opening Save Level 2" << std::endl;
+	}
+
+	std::string check;
+	int type;
+	float posX;
+	float posY;
+	float sizeX;
+	float sizeY;
+	float rot;
+	int r;
+	int g;
+	int b;
+
+	std::string item;
+	while (!input_file.eof())
+	{
+		input_file >> check;
+		if (check == "Object")
+		{
+			input_file >> type >> posX >> posY >> sizeX >> sizeY >> rot >> r >> g >> b;
+		}
+
+		if (type == 1)
+		{
+			addDrawable(new Objects(sf::Vector2f(posX, posY), sf::Vector2f(sizeX, sizeY), rot, sf::Color(r, g, b), 0));
+		}
+		if (type == 2)
+		{
+			addDrawable(new Objects(sf::Vector2f(posX, posY), sizeX, sf::Color(r, g, b), 0));
+		}
+		if (type == 3)
+		{
+			addDrawable(new Objects(sf::Vector2f(posX, posY), sizeX, rot, 3, sf::Color(r, g, b), 0));
+		}
+		if (type == 4)
+		{
+			player = new Player(sf::Vector2f(posX, posY), sf::Vector2f(sizeX, sizeY), rot, sf::Color(r, g, b));
+			shapesToBeDrawn.push_back(player);
+			noOfPlayers = 1;
+		}
+	}
 }
 
 void Scene::load3()
 {
-	
+	//read from file
+	std::ifstream input_file;
+	input_file.open("./Levels/Level3.txt");
+
+	//check for error
+	if (input_file.fail())
+	{
+		std::cerr << "Error: Opening Save Level 3" << std::endl;
+	}
+
+	std::string check;
+	int type;
+	float posX;
+	float posY;
+	float sizeX;
+	float sizeY;
+	float rot;
+	int r;
+	int g;
+	int b;
+
+	std::string item;
+	while (!input_file.eof())
+	{
+		input_file >> check;
+		if (check == "Object")
+		{
+			input_file >> type >> posX >> posY >> sizeX >> sizeY >> rot >> r >> g >> b;
+		}
+
+		if (type == 1)
+		{
+			addDrawable(new Objects(sf::Vector2f(posX, posY), sf::Vector2f(sizeX, sizeY), rot, sf::Color(r, g, b), 0));
+		}
+		if (type == 2)
+		{
+			addDrawable(new Objects(sf::Vector2f(posX, posY), sizeX, sf::Color(r, g, b), 0));
+		}
+		if (type == 3)
+		{
+			addDrawable(new Objects(sf::Vector2f(posX, posY), sizeX, rot, 3, sf::Color(r, g, b), 0));
+		}
+		if (type == 4)
+		{
+			player = new Player(sf::Vector2f(posX, posY), sf::Vector2f(sizeX, sizeY), rot, sf::Color(r, g, b));
+			shapesToBeDrawn.push_back(player);
+			noOfPlayers = 1;
+		}
+	}
 }
