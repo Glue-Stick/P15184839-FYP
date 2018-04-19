@@ -9,7 +9,7 @@ public:
 	Collision(bool applyGravity, bool staticObject);
 	~Collision();
 
-	void Move(float dx, float dy) { applyForce(sf::Vector2f(dx, dy), 10); }
+	void Move(float dx, float dy) { applyForce(sf::Vector2f(dx, dy), 20); }
 
 	bool checkCollision(Collision& other, float push);
 	sf::Vector2f GetPosition() { return m_position; }

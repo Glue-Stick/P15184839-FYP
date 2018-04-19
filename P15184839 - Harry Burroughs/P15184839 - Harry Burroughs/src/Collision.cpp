@@ -66,10 +66,7 @@ bool Collision::checkCollision(Collision & other, float push)
 		isGrounded = true;
 		return true;
 	}
-	else
-	{
-		isGrounded = false;
-	}
+	isGrounded = false;
 	return false;
 }
 
