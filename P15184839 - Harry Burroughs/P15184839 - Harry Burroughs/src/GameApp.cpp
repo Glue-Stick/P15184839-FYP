@@ -15,16 +15,13 @@ void GameApp::Run()
 	ImGui::SFML::Init(m_window);
 
 	sf::Color bgColor = sf::Color::White;
-
 	float color[3] = { 1.0f, 1.0f, 1.0f };
+	
 	float variables[4] = { 700.f, 450.f, 20.f, 0.f };
 	float usedVariables[4];
 
 	float physics[2] = { 9.8, 0 };
 	float usedPhysics[2];
-
-	int physicsOption[1] = { 1 };
-	int usedPhysicsOption;
 
 	char windowTitle[255] = "Final Year Project";
 

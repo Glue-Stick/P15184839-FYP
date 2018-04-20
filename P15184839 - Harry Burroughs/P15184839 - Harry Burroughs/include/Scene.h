@@ -39,6 +39,7 @@ public:
 
 	std::vector<Objects*> shapesToBeDrawn;
 	std::vector<sf::Drawable*> gridToBeDrawn;
+	
 	std::vector<Objects*> Level1;
 	std::vector<Objects*> Level2;
 	std::vector<Objects*> Level3;

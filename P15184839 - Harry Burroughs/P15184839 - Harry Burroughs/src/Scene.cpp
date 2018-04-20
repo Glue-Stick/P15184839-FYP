@@ -160,9 +160,9 @@ void Scene::load1()
 	float sizeY;
 	float rot;
 	int r;
-	int g; 
+	int g;
 	int b;
-	
+
 	std::string item;
 
 	if (input_file.peek() == std::ifstream::traits_type::eof())

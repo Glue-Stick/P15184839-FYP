@@ -31,8 +31,6 @@ bool Collision::checkCollision(Collision & other, float push)
 		{
 			if (deltaX > 0.0f && m_velocity.x < 0)
 			{
-				/*Move(intersectX * (20.0f - push), 0.0f);
-				other.Move(-intersectX * push, 0.0f);*/
 				m_position.x -= intersectX + m_size.x;
 				m_velocity.x = 0;
 			}
