@@ -29,14 +29,9 @@ void GameApp::Run()
 	m_window->resetGLStates();
 	sf::Clock deltaClock;
 
-	/*b2Vec2 Gravity(0.f, 9.8f);
-	b2World World(Gravity);*/
-
 	//main application loop
 	while (m_window->isOpen())
 	{
-		//m_window->clear(sf::Color::White);
-
 		//HANDLE EVENT MESSAGE FROM OS
 		sf::Event e;
 		while (m_window->pollEvent(e))
