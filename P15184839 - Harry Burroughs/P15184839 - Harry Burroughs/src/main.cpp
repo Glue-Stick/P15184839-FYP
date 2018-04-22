@@ -3,7 +3,7 @@
 #include <Drawables.h>
 
 
-int main()
+int main() /*!< Calls the project to run */
 {
 	GameApp* Game =  new GameApp();
 

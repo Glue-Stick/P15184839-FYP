@@ -1,6 +1,6 @@
 #include "Objects.h"
 
-Objects::Objects(sf::Vector2f position, sf::Vector2f size, float rotation, sf::Color colour, bool updateVisual) : Collision(1, 1)
+Objects::Objects(sf::Vector2f position, sf::Vector2f size, float rotation, sf::Color colour, bool updateVisual) : Collision(1, 1) /*!< Sets the parameters for shape, whilst inheriting aspects from Collision to determine whether the object is static, and affected by gravity */
 {
 	m_position = position;
 	m_size = size;
@@ -61,10 +61,10 @@ Objects::Objects(sf::Vector2f position, float radius, float rotation, float numb
 
 void Objects::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	target.draw(*drawable);
+	target.draw(*drawable); /*!< Function used to draw arrays to the window */
 }
 
-void Objects::Update(float power)
+void Objects::Update(float power) /*!< Resets the position of drawables that have been moved, as well as calling the Collision Update to allow gravity to take affect */
 {
 	drawable->setPosition(m_position);
 	Collision::Update(power);

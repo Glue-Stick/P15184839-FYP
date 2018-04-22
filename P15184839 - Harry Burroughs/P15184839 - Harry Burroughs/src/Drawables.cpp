@@ -7,7 +7,7 @@ Drawables::Drawables(Scene* scene)
 	this->scene = scene;
 }
 
-void Drawables::drawSquare(float x, float y, float size, float rotation, sf::RenderWindow* window, sf::Color color)
+void Drawables::drawSquare(float x, float y, float size, float rotation, sf::RenderWindow* window, sf::Color color) /*!< Takes in values set by the user in the main loop, and passes those values into the Object constructor to set the parameters of the shape, and then add it to drawiing array in Scene */
 {
 	scene->addDrawable(new Objects(sf::Vector2f(x, y), sf::Vector2f(size, size), rotation, color, 0));
 }
@@ -29,7 +29,7 @@ void Drawables::drawTriangle(float x, float y, float size, float rotation, sf::R
 
 
 
-void Drawables::drawGrid(float x, float y, sf::RenderWindow * window)
+void Drawables::drawGrid(float x, float y, sf::RenderWindow * window) /*!< Sets all the lines to be drawn to the screen so that a grid is drawn */
 {
 	/* Horizontal Lines */
 	sf::RectangleShape* Horizontal1 = new sf::RectangleShape();
@@ -299,7 +299,7 @@ void Drawables::drawGrid(float x, float y, sf::RenderWindow * window)
 	scene->addToGrid(Vertical15);
 }
 
-void Drawables::drawGridNumbers(float x, float y, sf::RenderWindow * window)
+void Drawables::drawGridNumbers(float x, float y, sf::RenderWindow * window) /*!< Draws the numbers to correlate with the grid, to help the user know where theyre drawing their objects too */
 {
 	/*!< Prepare the fonts to print to screen. */
 	if (!Font.loadFromFile("C:/Windows/Fonts/arial.ttf"))

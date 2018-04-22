@@ -5,17 +5,17 @@ Scene::Scene()
 	
 }
 
-void Scene::addDrawable(Objects* shape)
+void Scene::addDrawable(Objects* shape) /*!< When called will push back the passed in object to the array */
 {
-	shapesToBeDrawn.push_back(shape);
+	shapesToBeDrawn.push_back(shape); 
 }
 
-void Scene::addToGrid(sf::Drawable * grid)
+void Scene::addToGrid(sf::Drawable * grid) /*!< When called will push back the passed in drawable to the array */
 {
-	gridToBeDrawn.push_back(grid);
+	gridToBeDrawn.push_back(grid); 
 }
 
-void Scene::Undo()
+void Scene::Undo() /*!< Clears the last thing to be pushed into the array, and if they type of the object matches the player type, it resets the noOfPlayers variablee */
 {
 	if (shapesToBeDrawn[shapesToBeDrawn.size() - 1]->type == 2)
 	{
@@ -24,12 +24,12 @@ void Scene::Undo()
 	shapesToBeDrawn.pop_back();
 }
 
-void Scene::addText(sf::Text* text)
+void Scene::addText(sf::Text* text) /*!< When called will push back the passed in text to the array */
 {
 	gridToBeDrawn.push_back(text);
 }
 
-void Scene::render(sf::RenderWindow* window)
+void Scene::render(sf::RenderWindow* window) /*!< Loops through the arrays every frame and renders the shape to the window */
 {
 	for (unsigned int i = 0; i < shapesToBeDrawn.size(); i++)
 	{
@@ -41,7 +41,7 @@ void Scene::render(sf::RenderWindow* window)
 	}	
 }
 
-void Scene::update(sf::RenderWindow * window, float power, float speed)
+void Scene::update(sf::RenderWindow * window, float power, float speed) /*!< Loops through the array and updates every object, and if the player exists on the window, updates the player and checks for collisions with the player */
 {
 	for (int i = 0; i < shapesToBeDrawn.size(); i++)
 	{
@@ -57,20 +57,20 @@ void Scene::update(sf::RenderWindow * window, float power, float speed)
 	}	
 }
 
-void Scene::addPlayer(float x, float y, float size, float rotation, sf::RenderWindow * window, sf::Color color)
+void Scene::addPlayer(float x, float y, float size, float rotation, sf::RenderWindow * window, sf::Color color) /*!< Adds the player object to the array and sets the noOfPlayers variable to be 1 */
 {
 	player = new Player(sf::Vector2f(x, y), sf::Vector2f(size, size), rotation, color);
 	shapesToBeDrawn.push_back(player);
 	noOfPlayers = 1;
 }
 
-void Scene::clear()
+void Scene::clear() /*!< Empties the array and resets the numbers of players  */
 {
 	shapesToBeDrawn.clear();
 	noOfPlayers = 0;
 }
 
-void Scene::save1()
+void Scene::save1() /*!< Saves the shapesToBeDrawn array to a text file */
 {
 	std::ofstream output_file("./Levels/Level1.txt");
 	for (int i = 0; i < shapesToBeDrawn.size(); i++)
@@ -91,7 +91,7 @@ void Scene::save1()
 		output_file << g << "\n";
 		output_file << b << "\n";
 	}	
-}
+} 
 
 void Scene::save2()
 {
@@ -139,7 +139,7 @@ void Scene::save3()
 	}	
 }
 
-void Scene::load1()
+void Scene::load1() /*!< Reads the information from text file, writes that information to temporary variables and uses those variables to redraw the shapes saved to the window */
 {
 	//read from file
 	std::ifstream input_file;

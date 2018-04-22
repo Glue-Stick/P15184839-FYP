@@ -1,6 +1,6 @@
 #include "Collision.h"
 
-Collision::Collision(bool applyGravity, bool staticObject)
+Collision::Collision(bool applyGravity, bool staticObject) /*!< Constructor sets whether or not  */
 {
 	m_Gravity = applyGravity;
 	m_staticCollider = staticObject;
@@ -10,7 +10,7 @@ Collision::~Collision()
 {
 }
 
-bool Collision::checkCollision(Collision & other, float push)
+bool Collision::checkCollision(Collision & other, float push) /*!< All collision checks are handled and settled here, by finding the constraints of each object and checking to see if their X and Y values intersect, and if they do, they handle to collision */
 {
 	sf::Vector2f otherPosition = other.GetPosition();
 	sf::Vector2f otherHalfSize = other.GetHalfSize();
@@ -36,8 +36,6 @@ bool Collision::checkCollision(Collision & other, float push)
 			}
 			else if (deltaX < 0.0f && m_velocity.x > 0)
 			{
-				/*Move(-intersectX * (20.0f - push), 0.0f);
-				other.Move(intersectX * push, 0.0f);*/
 				m_position.x += intersectX - m_size.x;
 				m_velocity.x = 0;
 			}
@@ -46,17 +44,12 @@ bool Collision::checkCollision(Collision & other, float push)
 		{
 			if (deltaY > 0.0f && m_velocity.y < 0)
 			{
-				/*Move(0.0f, intersectY * (20.0f - push));
-				other.Move(0.0f, -intersectY * push);*/
-
 				m_position.y -= intersectY + m_size.y;
 				m_velocity.y = 0;
 
 			}
 			else if (deltaY < 0.0f && m_velocity.y > 0)
 			{
-				/*Move(0.0f, -intersectY * (20.0f - push));
-				other.Move(0.0f, intersectY * push);*/
 				m_position.y += intersectY - m_size.y;
 				m_velocity.y = 0;
 			}
@@ -68,7 +61,7 @@ bool Collision::checkCollision(Collision & other, float push)
 	return false;
 }
 
-void Collision::applyForce(sf::Vector2f direction, float power)
+void Collision::applyForce(sf::Vector2f direction, float power) /*!< Applies a velocity to an Objects body */
 {
 	if (!m_staticCollider)
 	{
@@ -76,17 +69,17 @@ void Collision::applyForce(sf::Vector2f direction, float power)
 	}	
 }
 
-void Collision::isStatic(bool wontMove)
+void Collision::isStatic(bool wontMove) /*!< Returns a boolean to set an object as static or not static */
 {
 	m_staticCollider = wontMove;
 }
 
-void Collision::move()
+void Collision::move() /*!< Moves the position of an object by the velocity */
 {
 	m_position += m_velocity;
 }
 
-void Collision::Update(float power)
+void Collision::Update(float power) /*!< Applies gravity to an object that can have gravity applied to it */
 {
 	//m_velocity = sf::Vector2f(0.f,0.f);
 	if (m_Gravity && !isGrounded)

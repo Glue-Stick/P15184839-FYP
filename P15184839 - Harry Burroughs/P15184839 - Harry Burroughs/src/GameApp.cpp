@@ -1,14 +1,14 @@
 #include <GameApp.h>
 
-GameApp::GameApp()
+GameApp::GameApp() /*!< Creates the sfml window the game will run in, at 1400 in the x and 900 in the y, created as a pointer so it will hold its place in the memory. */
 {
-	m_window = new sf::RenderWindow (sf::VideoMode(1400, 900, 32),""); /*!< Creates the sfml window the game will run in, at 1400 in the x and 900 in the y, created as a pointer so it will hold its place in the memory. */
+	m_window = new sf::RenderWindow (sf::VideoMode(1400, 900, 32),""); 
 	scene = new Scene();
 	input = new Input(scene);
 	
 }
 
-void GameApp::Run()
+void GameApp::Run() /*!< The main game loop, handles all the UI creation, and calls the update functions when the program allows them to be called */
 {
 	ImGui::CreateContext();
 	m_window->setVerticalSyncEnabled(true);
